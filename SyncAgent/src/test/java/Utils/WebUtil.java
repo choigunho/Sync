@@ -108,12 +108,11 @@ public class WebUtil {
 				
 				item.click();
 				
-				WebElement btn_move = driver.findElement(By.className("icon_ca_w_delete"));
-				btn_move.click();
-				
 			}
 		}
 		
+		WebElement btn_delete= driver.findElement(By.className("icon_ca_w_delete"));
+		btn_delete.click();
 //		Thread.sleep(1 * 1000);
 		
 		WebElement btn_ok = driver.findElement(By.className("button_st6"));
