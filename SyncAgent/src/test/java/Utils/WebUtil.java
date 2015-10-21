@@ -167,7 +167,7 @@ public class WebUtil {
 			WebElement fold = item.findElement(By.className("fold_name"));
 			if(fold.getText().equals(oldName)) {
 
-				Thread.sleep(1 * 500);
+//				Thread.sleep(1 * 500);
 				
 				// 컨텍스트 메뉴 클릭
 				WebElement action_context = item.findElement(By.className("action_context"));
@@ -175,18 +175,19 @@ public class WebUtil {
 				
 				Thread.sleep(1 * 500);
 				
-				WebElement change_name = driver.findElement(By.className("change_name"));
+				// 이름 변경 레이블 클릭
+				WebElement change_name = item.findElement(By.className("change_name"));
 				change_name.click();
 				
-				Thread.sleep(1 * 500);
+//				Thread.sleep(1 * 500);
 				
 				// 텍스트 입력
-				WebElement textField = driver.findElement(By.id("inputFldRenm"));
-				
+				WebElement textField = item.findElement(By.id("inputFldRenm"));
 				textField.clear();
 				textField.sendKeys(newName);
 				
-				List<WebElement> btn = driver.findElement(By.className("editing_file")).findElements(By.className("button_st2"));
+				// 저장 버튼 클릭
+				List<WebElement> btn = item.findElement(By.className("editing_file")).findElements(By.className("button_st2"));
 				btn.get(1).click();
 			}
 		}
