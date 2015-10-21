@@ -9,7 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class AccountUtil {
 
-	public static WebDriver login(String userid, String password) {
+	public static WebDriver login(String userid, String password) throws Exception {
 		
 		WebDriver driver = new ChromeDriver();
 		driver.get("https://182.193.2.71/cc/#/efss/drive/D01/101000000000000000/N/N/N");
@@ -30,6 +30,8 @@ public class AccountUtil {
 			}
 		});
 		
+		Thread.sleep(1 * 1000);
 		return driver;
 	}
+	
 }

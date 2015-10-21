@@ -68,7 +68,7 @@ public class WebUtil {
 		List<WebElement> folderadd = driver.findElements(By.className("etc_service"));
 		folderadd.get(0).findElements(By.className("set_add")).get(1).click();
 		
-		Thread.sleep(1 * 1000);
+		Thread.sleep(1000);
 		
 		// 텍스트 입력
 		WebElement textField = driver.findElement(By.id("inputNewFolder"));
@@ -100,6 +100,7 @@ public class WebUtil {
 	public static void deleteFolder(String folderName, WebDriver driver) throws Exception {
 	
 		WebElement we = driver.findElement(By.className("drive_scroll_com"));
+		Thread.sleep(1 * 1000);
 		
 		List<WebElement> subjectItems = we.findElements(By.className("subject_line"));
 		for(WebElement item: subjectItems) {
@@ -123,6 +124,8 @@ public class WebUtil {
 	public static void moveFolder(String folderName, String parentFolder, WebDriver driver) throws Exception {
 		
 		WebElement we = driver.findElement(By.className("drive_scroll_com"));
+		
+		Thread.sleep(1 * 1000);
 		
 		List<WebElement> subjectItems = we.findElements(By.className("subject_line"));
 		for(WebElement item: subjectItems) {
@@ -155,59 +158,31 @@ public class WebUtil {
 		
 	}
 	
-	/*
-	 * 삭제 예정
 	public static void rename(String oldName, String newName, WebDriver driver) throws Exception {
 		
-		WebElement we = driver.findElement(By.className("drive_scroll_com"));
+		List<WebElement> tbody = driver.findElements(By.cssSelector("tbody[sf-virtual-repeat]"));
 		
-		List<WebElement> subjectItems = we.findElements(By.className("subject_line"));
-		
-		for(WebElement item: subjectItems) {
-			System.out.println("sdsdsdsd " + item.getText());
-			if (item.getText().equals(oldName)) {
-				
-				WebElement action_context = driver.findElement(By.className("action_context"));
-				action_context.click();
-				
-				WebElement change_name = driver.findElement(By.className("change_name"));
-				change_name.click();
-				
-				// 텍스트 입력
-				WebElement textField = driver.findElement(By.id("inputFldRenm"));
-				textField.clear();
-				textField.sendKeys(newName);
-				
-				List<WebElement> btn = driver.findElement(By.className("editing_file")).findElements(By.className("button_st2"));
-				btn.get(1).click();
-				
-			}
-		}
-	}
-	*/
-	
-	public static void rename(String oldName, String newName, WebDriver driver) throws Exception {
-		
-		List<WebElement> list = driver.findElements(By.cssSelector("tbody[sf-virtual-repeat]"));
-		
-		for(WebElement item: list) {
+		for(WebElement item: tbody) {
 			
 			WebElement fold = item.findElement(By.className("fold_name"));
 			if(fold.getText().equals(oldName)) {
+
+				Thread.sleep(1 * 500);
 				
-				Thread.sleep(1* 1000);
-				
-				// 컨텍스트 클릭
+				// 컨텍스트 메뉴 클릭
 				WebElement action_context = item.findElement(By.className("action_context"));
 				action_context.click();
 				
-				Thread.sleep(1* 1000);
+				Thread.sleep(1 * 500);
 				
 				WebElement change_name = driver.findElement(By.className("change_name"));
 				change_name.click();
 				
+				Thread.sleep(1 * 500);
+				
 				// 텍스트 입력
 				WebElement textField = driver.findElement(By.id("inputFldRenm"));
+				
 				textField.clear();
 				textField.sendKeys(newName);
 				
@@ -216,28 +191,11 @@ public class WebUtil {
 			}
 		}
 	}
-	
-	/*
-	// deprecated
-	public static void navigateToFolder(String dstFolder, WebDriver driver) throws Exception {
-	
-		WebElement we = driver.findElement(By.className("drive_scroll_com"));
-		
-		List<WebElement> subjectItems = we.findElements(By.className("subject_line"));
-		for(WebElement item: subjectItems) {
-			if (item.getText().equals(dstFolder)) {
-				
-				WebElement fold_name = item.findElement(By.className("fold_name"));
-				fold_name.click();
-				
-			}
-		}
-	}
-	*/
 	
 	public static void navigateToFolder(String dstFolder, WebDriver driver) throws Exception {
 		
 		List<WebElement> folds = driver.findElements(By.className("fold_name"));
+//		Thread.sleep(1 * 1000);
 		
 		for(WebElement fold: folds) {
 			if(fold.getText().equals(dstFolder)) {
@@ -245,6 +203,5 @@ public class WebUtil {
 			}
 		}
 	}
-	
 	
 }

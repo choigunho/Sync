@@ -19,7 +19,7 @@ public class SameFiles {
 	FileUtil fu = new FileUtil();
 
 	@Before
-	public void setUp(){
+	public void setUp() throws Exception{
 		// 동기화 폴더 초기화
 		try{
 			fu.cleanDirectory(userId);		

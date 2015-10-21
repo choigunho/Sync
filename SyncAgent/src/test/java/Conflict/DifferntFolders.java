@@ -23,7 +23,7 @@ public class DifferntFolders {
 	FileUtil fu = new FileUtil();
 
 	@Before
-	public void setUp(){
+	public void setUp() throws Exception{
 		// 동기화 폴더 초기화
 		try{
 			fu.cleanDirectory(userId);		
@@ -207,8 +207,8 @@ public class DifferntFolders {
 		fu.moveDirectoryToDirectory(srcDir, dstDir, userId);
 		
 		// 웹에서 이름 변경
+		Thread.sleep(1 * 1000);
 		WebUtil.navigateToFolder("Move", driver);
-		Thread.sleep(2 * 1000);
 		String oldName = "Conflict";
 		String newName = "Conflict16";
 		WebUtil.rename(oldName, newName, driver);
