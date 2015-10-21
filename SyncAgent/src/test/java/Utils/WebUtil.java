@@ -9,6 +9,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import com.thoughtworks.selenium.webdriven.commands.IsVisible;
+
 public class WebUtil {
 
 	public static int countFileAndFolders(WebDriver driver) {
@@ -147,22 +149,28 @@ public class WebUtil {
 	public static void rename(String oldName, String newName, WebDriver driver) throws Exception {
 		
 		List<WebElement> tbody = driver.findElements(By.cssSelector("tbody[sf-virtual-repeat]"));
+//		Thread.sleep(1 * 500);
 		
 		for(WebElement item: tbody) {
 			
 			WebElement fold = item.findElement(By.className("fold_name"));
 			if(fold.getText().equals(oldName)) {
 
-//				Thread.sleep(1 * 500);
+				Thread.sleep(1 * 500);
 				
 				// 컨텍스트 메뉴 클릭
 				WebElement action_context = item.findElement(By.className("action_context"));
+				if(action_context.isDisplayed()) {
+					System.out.println("action_context.isDisplayed()");
+				}
 				action_context.click();
-				
 				Thread.sleep(1 * 500);
 				
 				// 이름 변경 레이블 클릭
 				WebElement change_name = item.findElement(By.className("change_name"));
+				if(change_name.isDisplayed()) {
+					System.out.println("change_name.isDisplayed()");
+				}
 				change_name.click();
 				
 //				Thread.sleep(1 * 500);
@@ -181,14 +189,20 @@ public class WebUtil {
 	
 	public static void navigateToFolder(String dstFolder, WebDriver driver) throws Exception {
 		
-		List<WebElement> folds = driver.findElements(By.className("fold_name"));
+		List<WebElement> folders = driver.findElements(By.className("fold_name"));
 //		Thread.sleep(1 * 1000);
 		
-		for(WebElement fold: folds) {
-			if(fold.getText().equals(dstFolder)) {
-				fold.click();
+		for(WebElement folder: folders) {
+			if(folder.isDisplayed()){
+				System.out.println("folder.isDisplayed()");
+			}
+			
+			if(folder.getText().equals(dstFolder)) {
+				folder.click();
 			}
 		}
+		
+		Thread.sleep(1 * 500);
 	}
 	
 }
