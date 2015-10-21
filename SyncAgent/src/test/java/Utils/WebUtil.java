@@ -38,8 +38,9 @@ public class WebUtil {
 			Thread.sleep(1 * 1000);
 			System.out.println("무조건 60초 대기..." + (i) + " Seconds passed");
 		}
-		driver.navigate().refresh();
 		
+		driver.navigate().refresh();
+		Thread.sleep(1 * 1000);
 	}
 	
 	// 1초 간격으로 폴더+파일 목록수 확인(60초 동안)
@@ -60,13 +61,15 @@ public class WebUtil {
 				return false;
 			}
 		});
+		
+		Thread.sleep(1 * 1000);
 	}
 	
 	public static void createFolder(String folderName, WebDriver driver) throws Exception {
 		
 		// 폴더 생성
-		List<WebElement> folderadd = driver.findElements(By.className("etc_service"));
-		folderadd.get(0).findElements(By.className("set_add")).get(1).click();
+		WebElement btn_folderadd = driver.findElement(By.className("btn_folderadd"));
+		btn_folderadd.click();
 		
 		Thread.sleep(1000);
 		
