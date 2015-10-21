@@ -183,6 +183,7 @@ public class WebUtil {
 				// 저장 버튼 클릭
 				List<WebElement> btn = item.findElement(By.className("editing_file")).findElements(By.className("button_st2"));
 				btn.get(1).click();
+				
 			}
 		}
 	}
