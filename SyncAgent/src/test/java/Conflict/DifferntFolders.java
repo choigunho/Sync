@@ -179,8 +179,10 @@ public class DifferntFolders {
 		File dstDir = new File("Move");
 		fu.moveDirectoryToDirectory(srcDir, dstDir, userId);
 		
-		// 웹에서 폴더 생성
-		WebUtil.createFolder("Conflict15", "Move", driver);
+		// 웹에서 Move 하위에 폴더 생성
+		WebUtil.navigateToFolder("Move", driver);
+		Thread.sleep(1 * 1000);
+		WebUtil.createFolder("Conflict15", driver);
 		
 		// 동기화 
 		File targetDir = new File("/Move");

@@ -50,8 +50,10 @@ public class SYNCEA_357 {
 		File dstDir = new File("B");
 		fu.moveDirectoryToDirectory(srcDir, dstDir, userId);
 		
-		// 웹에서 B폴더 하위에 A폴더 생성
-		WebUtil.createFolder("A", "B", driver);
+		// 웹에서 Move 하위에 폴더 생성
+		WebUtil.navigateToFolder("B", driver);
+		Thread.sleep(1 * 1000);
+		WebUtil.createFolder("A", driver);
 
 		// 동기화 대기
 		File targetDir = new File("/B");

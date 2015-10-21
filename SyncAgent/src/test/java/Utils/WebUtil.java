@@ -81,22 +81,6 @@ public class WebUtil {
 		
 	}
 	
-	public static void createFolder(String folderName, String parentFolder, WebDriver driver) throws Exception {
-		
-		WebElement baseElement = driver.findElement(By.className("drive_scroll_com"));
-		
-		List<WebElement> items = baseElement.findElements(By.className("subject_line"));
-		for(WebElement item: items) {
-			if (item.getText().equals(parentFolder)) {
-				item.findElement(By.className("fold_name")).click();
-				
-				Thread.sleep(1 * 1000);
-				
-				createFolder(folderName, driver);				
-			}
-		}
-	}
-	
 	public static void deleteFolder(String folderName, WebDriver driver) throws Exception {
 	
 		WebElement we = driver.findElement(By.className("drive_scroll_com"));
