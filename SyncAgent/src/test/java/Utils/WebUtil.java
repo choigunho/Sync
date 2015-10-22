@@ -9,8 +9,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import com.thoughtworks.selenium.webdriven.commands.IsVisible;
-
 public class WebUtil {
 
 	public static int countFileAndFolders(WebDriver driver) {
@@ -102,8 +100,7 @@ public class WebUtil {
 		
 		WebElement btn_delete= driver.findElement(By.className("icon_ca_w_delete"));
 		btn_delete.click();
-//		Thread.sleep(1 * 1000);
-		
+
 		WebElement btn_ok = driver.findElement(By.className("button_st6"));
 		btn_ok.click();
 		
@@ -137,8 +134,6 @@ public class WebUtil {
 			if(item.getText().equals(parentFolder)) {
 				item.findElement(By.className("jqx-tree-item")).click();;
 				
-//				Thread.sleep(1 * 1000);
-				
 				WebElement ok = driver.findElement(By.id("mngOkBtn"));
 				ok.click();
 			}
@@ -149,7 +144,6 @@ public class WebUtil {
 	public static void rename(String oldName, String newName, WebDriver driver) throws Exception {
 		
 		List<WebElement> tbody = driver.findElements(By.cssSelector("tbody[sf-virtual-repeat]"));
-//		Thread.sleep(1 * 500);
 		
 		for(WebElement item: tbody) {
 			
@@ -173,8 +167,6 @@ public class WebUtil {
 				}
 				change_name.click();
 				
-//				Thread.sleep(1 * 500);
-				
 				// 텍스트 입력
 				WebElement textField = item.findElement(By.id("inputFldRenm"));
 				textField.clear();
@@ -191,7 +183,6 @@ public class WebUtil {
 	public static void navigateToFolder(String dstFolder, WebDriver driver) throws Exception {
 		
 		List<WebElement> folders = driver.findElements(By.className("fold_name"));
-//		Thread.sleep(1 * 1000);
 		
 		for(WebElement folder: folders) {
 			if(folder.isDisplayed()){
