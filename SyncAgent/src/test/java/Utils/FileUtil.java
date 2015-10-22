@@ -26,12 +26,16 @@ public class FileUtil {
 		FileUtils.copyFile(srcFile, dest);
 	}
 	
-	public void checkCountUntil60Seconds(int respectedCount, String userId, File targetDir) throws Exception {
+	public void checkCountUntil60Seconds(int respectedCount, String userId, File targetDir) {
 		
 		Awaitility.setDefaultTimeout(60, TimeUnit.SECONDS);
 		Awaitility.setDefaultPollInterval(1, TimeUnit.SECONDS);
 		
-		await().until(checkCountCallable(respectedCount, userId, targetDir));
+		try {
+			await().until(checkCountCallable(respectedCount, userId, targetDir));
+		}catch(Exception e){
+			System.out.println("동기화 실패!");
+		}
 		
 	}
 	
