@@ -1,11 +1,15 @@
 package Conflict;
 
+import java.io.File;
+import java.util.List;
+
 import org.openqa.selenium.WebDriver;
 import org.junit.*;
 import org.junit.runners.MethodSorters;
 
 import Utils.AccountUtil;
 import Utils.FileUtil;
+import Utils.WebUtil;
 import static org.junit.Assert.*;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
@@ -30,7 +34,20 @@ public class SameFiles {
 	}
 	
 	@Test
-	public void renameAtPC_renameAtWeb() {
+	public void renameAtPC_renameAtWEB() throws Exception {
+		
+		// 동기화 폴더에 파일 복사
+		File srcFile = new File(this.getClass().getResource("TestFiles").getFile() + "/Conflict1.pptx");
+		File destDir = new File(File.separator);
+		fu.copyFileToDirectory(srcFile, destDir, userId);
+				
+		
+		
+		
+		
+		
+		
+		
 		
 	}
 	
