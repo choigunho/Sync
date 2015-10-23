@@ -79,8 +79,6 @@ public class SameFolders {
 		String newName = "Conflict3_PC";
 		fu.renameFileDirectory(oldName, newName, userId);
 		
-		Thread.sleep(1 * 1000);
-		
 		// 웹에서 삭제
 		WebUtil.deleteFolder("Conflict3", driver);
 		
