@@ -147,7 +147,8 @@ public class WebUtil {
 		
 		for(WebElement item: tbody) {
 			
-			WebElement fold = item.findElement(By.className("fold_name"));
+			WebElement fold = item.findElement(By.className("file"));
+			System.out.println("fold.getText: " + fold.getText());
 			if(fold.getText().equals(oldName)) {
 
 				Thread.sleep(1 * 500);
@@ -168,9 +169,16 @@ public class WebUtil {
 				change_name.click();
 				
 				// 텍스트 입력
-				WebElement textField = item.findElement(By.id("inputFldRenm"));
-				textField.clear();
-				textField.sendKeys(newName);
+				// 찾는게 파일이면
+				try{
+					WebElement textField = item.findElement(By.id("inputFilRenm"));	
+					textField.clear();
+					textField.sendKeys(newName);
+				}catch(Exception e){
+					WebElement textField = item.findElement(By.id("inputFldRenm"));
+					textField.clear();
+					textField.sendKeys(newName);
+				}
 				
 				// 저장 버튼 클릭
 				List<WebElement> btn = item.findElement(By.className("editing_file")).findElements(By.className("button_st2"));
