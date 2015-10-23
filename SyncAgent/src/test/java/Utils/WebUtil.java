@@ -108,21 +108,13 @@ public class WebUtil {
 	
 	public static void moveFolder(String folderName, String parentFolder, WebDriver driver) throws Exception {
 		
-		WebElement we = driver.findElement(By.className("drive_scroll_com"));
+		itemClick(folderName, driver);
 		
-		Thread.sleep(1 * 1000);
-		
-		List<WebElement> subjectItems = we.findElements(By.className("subject_line"));
-		for(WebElement item: subjectItems) {
-			if (item.getText().equals(folderName)) {
-				
-				item.click();
-				
-				WebElement btn_move = driver.findElement(By.className("icon_ca_w_move"));
-				btn_move.click();
-				
-			}
+		WebElement btn_move = driver.findElement(By.className("icon_ca_w_move"));
+		if(btn_move.isDisplayed()) {
+			System.out.println("btn_move is Displayed");
 		}
+		btn_move.click();
 		
 		Thread.sleep(1 * 1000);
 		
@@ -138,9 +130,8 @@ public class WebUtil {
 				ok.click();
 			}
 		}
-		
 	}
-	
+
 	public static void rename(String oldName, String newName, WebDriver driver) throws Exception {
 		
 		List<WebElement> tbody = driver.findElements(By.cssSelector("tbody[sf-virtual-repeat]"));
@@ -156,7 +147,9 @@ public class WebUtil {
 				// 컨텍스트 메뉴 클릭
 				WebElement action_context = item.findElement(By.className("action_context"));
 				if(action_context.isDisplayed()) {
-					System.out.println("action_context.isDisplayed()");
+					System.out.println("action_context is Displayed");
+				} else {
+					System.out.println("action_context is not Displayed!");
 				}
 				action_context.click();
 				Thread.sleep(1 * 500);
@@ -164,12 +157,13 @@ public class WebUtil {
 				// 이름 변경 레이블 클릭
 				WebElement change_name = item.findElement(By.className("change_name"));
 				if(change_name.isDisplayed()) {
-					System.out.println("change_name.isDisplayed()");
+					System.out.println("change_name is Displayed");
+				}else {
+					System.out.println("change_name is not Displayed!");
 				}
 				change_name.click();
 				
 				// 텍스트 입력
-				// 찾는게 파일이면
 				try{
 					WebElement textField = item.findElement(By.id("inputFilRenm"));	
 					textField.clear();
@@ -203,6 +197,19 @@ public class WebUtil {
 		}
 		
 		Thread.sleep(1 * 500);
+	}
+	
+	public static void itemClick(String item, WebDriver driver) {
+		
+		List<WebElement> tbody = driver.findElements(By.cssSelector("tbody[sf-virtual-repeat]"));
+		for(WebElement body: tbody) {
+			
+			WebElement fold = body.findElement(By.className("file"));
+			System.out.println("fold.getText: " + fold.getText());
+			if(fold.getText().equals(item)) {
+				fold.click();
+			}
+		}
 	}
 	
 }
