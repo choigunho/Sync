@@ -86,7 +86,9 @@ public class FileUtil {
 
 		List<String> list = new ArrayList<String>();
 		for(File f: fileList){
-			list.add(f.getName());
+			if(!f.getName().equals(".cellwe.sync") && !f.getName().equals("." + userId + ".sync")) {
+				list.add(f.getName());
+			}
 		}
 		
 		return list;
@@ -97,6 +99,13 @@ public class FileUtil {
 		File src = new File(System.getProperty("user.home") + "/MyDrive(" + userId + ")/" + srcDir);
 		File dst = new File(System.getProperty("user.home") + "/MyDrive("+ userId + ")/" + dstDir);
 		FileUtils.moveDirectoryToDirectory(src, dst, false);
+	}
+	
+	public void moveFileToDirectory(File srcFile, File dstDir, String userId) throws Exception {
+		
+		File src = new File(System.getProperty("user.home") + "/MyDrive(" + userId + ")/" + srcFile);
+		File dst = new File(System.getProperty("user.home") + "/MyDrive("+ userId + ")/" + dstDir);
+		FileUtils.moveFileToDirectory(src, dst, false);
 	}
 	
 	public boolean renameFileDirectory(String oldName, String newName, String userId) {
@@ -115,5 +124,12 @@ public class FileUtil {
 		File dir = new File(System.getProperty("user.home") + "/MyDrive("+ userId + ")/" + dirName);
 		
 		FileUtils.deleteDirectory(dir);
+	}
+	
+	public void forceDelete(String fileName, String userId) throws Exception {
+		
+		File file = new File(System.getProperty("user.home") + "/MyDrive("+ userId + ")/" + fileName);
+		
+		FileUtils.forceDelete(file);
 	}
 }
