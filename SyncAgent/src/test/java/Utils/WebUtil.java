@@ -68,12 +68,22 @@ public class WebUtil {
 	public static void createFolder(String folderName, WebDriver driver) throws Exception {
 		
 		// 폴더 생성
+		(new WebDriverWait(driver, 10)).until(new ExpectedCondition<Boolean>() {
+			public Boolean apply(WebDriver d) {
+				return d.findElement(By.className("btn_folderadd")).isDisplayed();
+			}
+		});
 		WebElement btn_folderadd = driver.findElement(By.className("btn_folderadd"));
 		btn_folderadd.click();
 		
-		Thread.sleep(1000);
+//		Thread.sleep(1000);
 		
 		// 텍스트 입력
+		(new WebDriverWait(driver, 10)).until(new ExpectedCondition<Boolean>() {
+			public Boolean apply(WebDriver d) {
+				return d.findElement(By.id("inputNewFolder")).isDisplayed();
+			}
+		});
 		WebElement textField = driver.findElement(By.id("inputNewFolder"));
 		textField.clear();
 		textField.sendKeys(folderName);
@@ -108,22 +118,36 @@ public class WebUtil {
 	
 	public static void moveFolder(String folderName, String parentFolder, WebDriver driver) throws Exception {
 		
+		// 파일 or  폴더 클릭
 		itemClick(folderName, driver);
 		
+		// 하단 메뉴에서 이동 클릭
+		(new WebDriverWait(driver, 10)).until(new ExpectedCondition<Boolean>() {
+			public Boolean apply(WebDriver d) {
+				return d.findElement(By.className("icon_ca_w_move")).isDisplayed();
+			}
+		});
 		WebElement btn_move = driver.findElement(By.className("icon_ca_w_move"));
-		if(btn_move.isDisplayed()) {
-			System.out.println("btn_move is Displayed");
-		}
 		btn_move.click();
 		
-		Thread.sleep(1 * 1000);
+//		Thread.sleep(1 * 1000);
 		
+		// 이동 경로 설정
+		(new WebDriverWait(driver, 10)).until(new ExpectedCondition<Boolean>() {
+			public Boolean apply(WebDriver d) {
+				return d.findElement(By.className("jqx-tree-dropdown-root")).findElement(By.className("jqx-tree-dropdown")).isDisplayed();
+			}
+		});
 		WebElement popLayerList = driver.findElement(By.className("jqx-tree-dropdown-root")).findElement(By.className("jqx-tree-dropdown"));
-		
 		List<WebElement> items = popLayerList.findElements(By.className("jqx-tree-item-li"));
 		for(WebElement item: items) {
 			
 			if(item.getText().equals(parentFolder)) {
+				(new WebDriverWait(driver, 10)).until(new ExpectedCondition<Boolean>() {
+					public Boolean apply(WebDriver d) {
+						return d.findElement(By.className("jqx-tree-item")).isDisplayed();
+					}
+				});
 				item.findElement(By.className("jqx-tree-item")).click();;
 				
 				WebElement ok = driver.findElement(By.id("mngOkBtn"));
