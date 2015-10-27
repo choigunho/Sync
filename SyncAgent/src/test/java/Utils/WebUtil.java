@@ -156,14 +156,13 @@ public class WebUtil {
 	public static void rename(String oldName, String newName, WebDriver driver) throws Exception {
 		
 		List<WebElement> tbody = driver.findElements(By.cssSelector("tbody[sf-virtual-repeat]"));
-		System.out.println("tbody size: "+ tbody.size());
-		
 		for(WebElement item: tbody) {
 			
 			WebElement fold = item.findElement(By.className("file"));
-			System.out.println("fold.getText: " + fold.getText());
 			if(fold.getText().equals(oldName)) {
 
+				Thread.sleep(1 * 500);
+				
 				// 컨텍스트 메뉴 클릭
 				(new WebDriverWait(driver, 10)).until(new ExpectedCondition<Boolean>() {
 					public Boolean apply(WebDriver d) {
@@ -172,6 +171,8 @@ public class WebUtil {
 				});
 				WebElement action_context = item.findElement(By.className("action_context"));
 				action_context.click();
+				
+				Thread.sleep(1 * 500);
 				
 				// 이름 변경 레이블 클릭
 				(new WebDriverWait(driver, 10)).until(new ExpectedCondition<Boolean>() {
