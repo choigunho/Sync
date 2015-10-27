@@ -19,4 +19,10 @@ public class PropertyLoader {
 			System.out.println(key + "=" + value);
 		}
 	}
+	
+	@Test
+	public void test2() {
+//		System.out.println(AccountUtil.getServerUrl());
+		System.out.println(AccountUtil.getUserId());
+	}
 }

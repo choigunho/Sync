@@ -14,7 +14,7 @@ public class AccountUtil {
 	public static WebDriver login(String userid, String password) throws Exception {
 		
 		WebDriver driver = new ChromeDriver();
-		driver.get("https://182.193.2.71/cc/#/efss/drive/D01/101000000000000000/N/N/N");
+		driver.get(getServerUrl());
 		
 		WebElement id = driver.findElement(By.xpath("//*[@id=\"wrap\"]/div/div/div[2]/div/div[1]/div[1]/form/fieldset/div[1]/input"));
 		id.sendKeys(userid);
@@ -32,20 +32,23 @@ public class AccountUtil {
 			}
 		});
 		
-		Thread.sleep(1 * 1000);
+//		Thread.sleep(1 * 1000);
 		return driver;
 	}
 	
 	public static String getUserId() {
 		ResourceBundle rb = ResourceBundle.getBundle("UserSetting");
-		
 		return rb.getString("TEST_ACCOUNT_USER_ID");
 	}
 	
 	public static String getUserPwd() {
 		ResourceBundle rb = ResourceBundle.getBundle("UserSetting");
-		
 		return rb.getString("TEST_ACCOUNT_USER_PW");
+	}
+	
+	public static String getServerUrl() {
+		ResourceBundle rb = ResourceBundle.getBundle("UserSetting");
+		return rb.getString("CellWe_VER_SERVER_URL");
 	}
 	
 }
