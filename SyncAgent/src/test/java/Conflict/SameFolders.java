@@ -15,8 +15,8 @@ import static org.junit.Assert.*;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class SameFolders {
 	
-	String userId = "test3";
-	String pwd = "1111";
+	String userId = AccountUtil.getUserId();
+	String pwd =  AccountUtil.getUserPwd();
 	
 	protected WebDriver driver;
 	private StringBuffer verificationErrors = new StringBuffer();
