@@ -156,6 +156,7 @@ public class WebUtil {
 	public static void rename(String oldName, String newName, WebDriver driver) throws Exception {
 		
 		List<WebElement> tbody = driver.findElements(By.cssSelector("tbody[sf-virtual-repeat]"));
+		System.out.println("tbody size: "+ tbody.size());
 		
 		for(WebElement item: tbody) {
 			
@@ -223,7 +224,6 @@ public class WebUtil {
 		for(WebElement body: tbody) {
 			
 			WebElement fold = body.findElement(By.className("file"));
-			System.out.println("fold.getText: " + fold.getText());
 			if(fold.getText().equals(item)) {
 				fold.click();
 			}
