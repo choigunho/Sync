@@ -43,21 +43,21 @@ public class WebUtil {
 		Thread.sleep(1 * 1000);
 	}
 	
-	// 1초 간격으로 폴더+파일 목록수 확인(60초 동안)
+	// 1초 간격으로 라인의 개수 확인(60초 동안)
 	public static void refreshUntil60Seconds(final int expectedCount, WebDriver driver) throws Exception {
 		
 		(new WebDriverWait(driver, 60)).until(new ExpectedCondition<Boolean>() {
 			public Boolean apply(WebDriver d) {
 				
 				d.navigate().refresh();
-				List<WebElement> links = d.findElements(By.className("subject_line"));
-				
-				System.out.println("웹 동기화 기다리는 중...");
-				
-				if(links.size() - 2 == expectedCount){
+
+//				List<WebElement> links = d.findElements(By.className("subject_line"));
+				List<WebElement> tbody = d.findElements(By.cssSelector("tbody[sf-virtual-repeat]"));
+				if(tbody.size() == expectedCount){
 					return true;
 				}
 				
+				System.out.println("웹 동기화 기다리는 중...");
 				return false;
 			}
 		});
@@ -75,8 +75,6 @@ public class WebUtil {
 		});
 		WebElement btn_folderadd = driver.findElement(By.className("btn_folderadd"));
 		btn_folderadd.click();
-		
-//		Thread.sleep(1000);
 		
 		// 텍스트 입력
 		(new WebDriverWait(driver, 10)).until(new ExpectedCondition<Boolean>() {
@@ -96,18 +94,20 @@ public class WebUtil {
 	
 	public static void deleteFolder(String folderName, WebDriver driver) throws Exception {
 	
-		WebElement we = driver.findElement(By.className("drive_scroll_com"));
-		Thread.sleep(1 * 1000);
-		
-		List<WebElement> subjectItems = we.findElements(By.className("subject_line"));
-		for(WebElement item: subjectItems) {
-			if (item.getText().equals(folderName)) {
-				
-				item.click();
-				
+		List<WebElement> tbody = driver.findElements(By.cssSelector("tbody[sf-virtual-repeat]"));
+		for(WebElement item: tbody) {
+
+			WebElement fold = item.findElement(By.className("file"));
+			if (fold.getText().equals(folderName)) {
+				fold.click();
 			}
 		}
 		
+		(new WebDriverWait(driver, 10)).until(new ExpectedCondition<Boolean>() {
+			public Boolean apply(WebDriver d) {
+				return d.findElement(By.className("icon_ca_w_delete")).isDisplayed();
+			}
+		});
 		WebElement btn_delete= driver.findElement(By.className("icon_ca_w_delete"));
 		btn_delete.click();
 
@@ -118,7 +118,7 @@ public class WebUtil {
 	
 	public static void moveFolder(String folderName, String parentFolder, WebDriver driver) throws Exception {
 		
-		// 파일 or  폴더 클릭
+		// 아이템(파일or폴더) 클릭
 		itemClick(folderName, driver);
 		
 		// 하단 메뉴에서 이동 클릭
@@ -129,8 +129,6 @@ public class WebUtil {
 		});
 		WebElement btn_move = driver.findElement(By.className("icon_ca_w_move"));
 		btn_move.click();
-		
-//		Thread.sleep(1 * 1000);
 		
 		// 이동 경로 설정
 		(new WebDriverWait(driver, 10)).until(new ExpectedCondition<Boolean>() {
