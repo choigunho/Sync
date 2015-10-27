@@ -51,7 +51,6 @@ public class WebUtil {
 				
 				d.navigate().refresh();
 
-//				List<WebElement> links = d.findElements(By.className("subject_line"));
 				List<WebElement> tbody = d.findElements(By.cssSelector("tbody[sf-virtual-repeat]"));
 				if(tbody.size() == expectedCount){
 					return true;
@@ -164,25 +163,22 @@ public class WebUtil {
 			System.out.println("fold.getText: " + fold.getText());
 			if(fold.getText().equals(oldName)) {
 
-				Thread.sleep(1 * 500);
-				
 				// 컨텍스트 메뉴 클릭
+				(new WebDriverWait(driver, 10)).until(new ExpectedCondition<Boolean>() {
+					public Boolean apply(WebDriver d) {
+						return d.findElement(By.className("action_context")).isDisplayed();
+					}
+				});
 				WebElement action_context = item.findElement(By.className("action_context"));
-				if(action_context.isDisplayed()) {
-					System.out.println("action_context is Displayed");
-				} else {
-					System.out.println("action_context is not Displayed!");
-				}
 				action_context.click();
-				Thread.sleep(1 * 500);
 				
 				// 이름 변경 레이블 클릭
+				(new WebDriverWait(driver, 10)).until(new ExpectedCondition<Boolean>() {
+					public Boolean apply(WebDriver d) {
+						return d.findElement(By.className("change_name")).isDisplayed();
+					}
+				});
 				WebElement change_name = item.findElement(By.className("change_name"));
-				if(change_name.isDisplayed()) {
-					System.out.println("change_name is Displayed");
-				}else {
-					System.out.println("change_name is not Displayed!");
-				}
 				change_name.click();
 				
 				// 텍스트 입력
