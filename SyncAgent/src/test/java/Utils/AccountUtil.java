@@ -1,5 +1,7 @@
 package Utils;
 
+import java.util.ResourceBundle;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -32,6 +34,18 @@ public class AccountUtil {
 		
 		Thread.sleep(1 * 1000);
 		return driver;
+	}
+	
+	public static String getUserId() {
+		ResourceBundle rb = ResourceBundle.getBundle("UserSetting");
+		
+		return rb.getString("TEST_ACCOUNT_USER_ID");
+	}
+	
+	public static String getUserPwd() {
+		ResourceBundle rb = ResourceBundle.getBundle("UserSetting");
+		
+		return rb.getString("TEST_ACCOUNT_USER_PW");
 	}
 	
 }
