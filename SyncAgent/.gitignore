@@ -1,6 +1,10 @@
 /bin/
-
-
+/target/
+/.classpath
+/.project
+/.settings/
+.DS_Store
+/.gitignore.swp
 
 
 ### Maven ###
