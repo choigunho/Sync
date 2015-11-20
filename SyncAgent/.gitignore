@@ -1,16 +1,8 @@
 /bin/
-/target/
+/target
 /.classpath
 /.project
-.settings/
-.DS_Store
+/.settings/
 /.gitignore.swp
-
-
-### Maven ###
-target/
-
-
-
-### Java ###
 *.class
+.DS_Store
