@@ -13,7 +13,7 @@ import Utils.WebUtil;
 import static org.junit.Assert.*;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class DifferntFolders {
+public class DifferentFolders {
 	
 	String userId = AccountUtil.getUserId();
 	String pwd =  AccountUtil.getUserPwd();
