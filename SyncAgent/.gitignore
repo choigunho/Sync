@@ -1,8 +1,8 @@
 /bin/
 /target
-/.classpath
+.classpath
 /.project
-/.settings/
+.settings/
 /.gitignore.swp
 *.class
 .DS_Store
