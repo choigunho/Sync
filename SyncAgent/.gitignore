@@ -1,6 +1,6 @@
 /bin/
 /target
-.classpath
+/.classpath
 /.project
 .settings/
 /.gitignore.swp
