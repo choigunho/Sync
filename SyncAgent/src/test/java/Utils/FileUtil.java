@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.concurrent.Callable;
 import java.util.concurrent.TimeUnit;
 
+import static org.junit.Assert.fail;
+
 import org.apache.commons.io.FileUtils;
 
 import com.jayway.awaitility.Awaitility;
@@ -34,7 +36,7 @@ public class FileUtil {
 		try {
 			await().until(checkCountCallable(respectedCount, userId, targetDir));
 		}catch(Exception e){
-			System.out.println("동기화 실패!");
+			fail("동기화 실패!");
 		}
 		
 	}
