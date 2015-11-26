@@ -52,15 +52,15 @@ public class FileUtil {
 				
 				System.out.println("PC 동기화 기다리는 중...");
 				
-				if(targetDir.toString().equals(File.separator)) {
-					// 숨김파일 2개 제외(.test3.sync, .cellwe.sync)
-					if(fileList.length - 2 == respectedCount) {
-						return true;
-					}					
-				} else {
-					if(fileList.length == respectedCount) {
-						return true;
+				List<String> list = new ArrayList<String>();
+				for(File f: fileList){
+					if(!f.getName().equals(".cellwe.sync") && !f.getName().equals("." + userId + ".sync")) {
+						list.add(f.getName());
 					}
+				}
+				
+				if(list.size() == respectedCount) {
+					return true;
 				}
 				
 				return false;
