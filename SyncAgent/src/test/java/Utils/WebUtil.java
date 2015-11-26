@@ -172,14 +172,14 @@ public class WebUtil {
 				WebElement action_context = item.findElement(By.className("action_context"));
 				action_context.click();
 				
-				Thread.sleep(1 * 500);
+				Thread.sleep(1 * 1000);
 				
 				// 이름 변경 레이블 클릭
-				(new WebDriverWait(driver, 10)).until(new ExpectedCondition<Boolean>() {
-					public Boolean apply(WebDriver d) {
-						return d.findElement(By.className("change_name")).isDisplayed();
-					}
-				});
+//				(new WebDriverWait(driver, 10)).until(new ExpectedCondition<Boolean>() {
+//					public Boolean apply(WebDriver d) {
+//						return d.findElement(By.className("change_name")).isDisplayed();
+//					}
+//				});
 				WebElement change_name = item.findElement(By.className("change_name"));
 				change_name.click();
 				
