@@ -30,6 +30,21 @@ public class WebUtil {
 		
 		return list;
 	}
+	
+	public static List<String> getList(WebDriver driver) {
+		
+		List<String> list = new ArrayList<String>();
+		List<WebElement> items = driver.findElements(By.cssSelector("tbody[sf-virtual-repeat]"));
+		
+		for(WebElement item: items) {
+
+			WebElement name = item.findElement(By.className("file"));
+			list.add(name.getText());
+		}
+		
+		System.out.println(list);
+		return list;
+	}
 
 	// 1분 후 페이지 새로 고침
 	public static void refreshAfter60Seconds(WebDriver driver) throws Exception {
@@ -53,6 +68,26 @@ public class WebUtil {
 
 				List<WebElement> tbody = d.findElements(By.cssSelector("tbody[sf-virtual-repeat]"));
 				if(tbody.size() == expectedCount){
+					return true;
+				}
+				
+				System.out.println("웹 동기화 기다리는 중...");
+				return false;
+			}
+		});
+		
+		Thread.sleep(1 * 1000);
+	}
+	
+	public static void refreshUntil60Seconds(final String expectedName, WebDriver driver) throws Exception {
+		
+		(new WebDriverWait(driver, 60)).until(new ExpectedCondition<Boolean>() {
+			public Boolean apply(WebDriver d) {
+				
+				d.navigate().refresh();
+
+				List<String> list = WebUtil.getFileNameList(d);
+				if(list.contains(expectedName)) {
 					return true;
 				}
 				
@@ -207,9 +242,9 @@ public class WebUtil {
 		List<WebElement> folders = driver.findElements(By.className("fold_name"));
 		
 		for(WebElement folder: folders) {
-			if(folder.isDisplayed()){
-				System.out.println("folder.isDisplayed()");
-			}
+//			if(folder.isDisplayed()){
+//				System.out.println("folder.isDisplayed()");
+//			}
 			
 			if(folder.getText().equals(dstFolder)) {
 				folder.click();
