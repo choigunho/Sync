@@ -39,9 +39,10 @@ public class Create100FoldersFromWeb {
 		int totalFolders = 100;
 		
 		// 웹에서 폴더 100개 생성
-		for(int i=0; i<totalFolders; i++) {
+		for(int i=1; i<=totalFolders; i++) {
 			WebUtil.createFolder(driver);
 			Thread.sleep(2000);
+//			WebUtil.refreshUntil60Seconds(i, driver);
 		}
 		
 		// PC에서 동기화 확인
