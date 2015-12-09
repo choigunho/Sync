@@ -36,28 +36,22 @@ public class Create100FoldersFromWeb {
 	@Test
 	public void create100Folders() throws Exception {
 
+		int totalFolders = 100;
+		
 		// 웹에서 폴더 100개 생성
-		for(int i=0; i<100; i++) {
+		for(int i=0; i<totalFolders; i++) {
 			WebUtil.createFolder(driver);
 			Thread.sleep(2000);
 		}
 		
 		// PC에서 동기화 확인
 		File targetDir = new File(File.separator);
-		fu.checkCountUntil60Seconds(100, userId, targetDir);
+		fu.checkCountUntil60Seconds(totalFolders, userId, targetDir);
 		
 	}
 	
 	@After
-	public void tearDown() throws Exception {
-
-		//Close the browser
-		driver.quit();
-		String verificationErrorString = verificationErrors.toString();
-	
-		if (!"".equals(verificationErrorString)) {
-			fail(verificationErrorString);
-		}
+	public void tearDown() throws Exception {	
 		
 		// 동기화 폴더 초기화
 		try{
@@ -65,5 +59,15 @@ public class Create100FoldersFromWeb {
 		} catch(Exception e){
 		}
 		
+		// 웹 초기화 확인 
+		WebUtil.refreshUntil60Seconds(0, driver);
+		
+		//Close the browser
+		driver.quit();
+		String verificationErrorString = verificationErrors.toString();
+	
+		if (!"".equals(verificationErrorString)) {
+			fail(verificationErrorString);
+		}
 	}
 }
