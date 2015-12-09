@@ -6,6 +6,7 @@ import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -97,6 +98,29 @@ public class WebUtil {
 		});
 		
 		Thread.sleep(1 * 1000);
+	}
+	
+	public static void createFolder(WebDriver driver) throws Exception {
+
+		// 폴더 생성
+		(new WebDriverWait(driver, 10)).until(new ExpectedCondition<Boolean>() {
+			public Boolean apply(WebDriver d) {
+				return d.findElement(By.className("btn_folderadd")).isDisplayed();
+			}
+		});
+		WebElement btn_folderadd = driver.findElement(By.className("btn_folderadd"));
+		Actions actions = new Actions(driver);
+		actions.click(btn_folderadd).perform();
+		
+		// 만들기 버튼 클릭
+		(new WebDriverWait(driver, 10)).until(new ExpectedCondition<Boolean>() {
+			public Boolean apply(WebDriver d) {
+				return d.findElement(By.className("btn_bgcolor_bl")).isDisplayed();
+			}
+		});
+		WebElement btn = driver.findElement(By.className("btn_bgcolor_bl"));
+		btn.click();
+		
 	}
 	
 	public static void createFolder(String folderName, WebDriver driver) throws Exception {
