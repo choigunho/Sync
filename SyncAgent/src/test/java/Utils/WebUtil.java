@@ -110,7 +110,7 @@ public class WebUtil {
 		WebElement btn_folderadd = driver.findElement(By.className("btn_folderadd"));
 		btn_folderadd.click();
 		
-		Thread.sleep(1000);
+//		Thread.sleep(1000);
 		
 		// 만들기 버튼 클릭
 		(new WebDriverWait(driver, 10)).until(new ExpectedCondition<Boolean>() {
