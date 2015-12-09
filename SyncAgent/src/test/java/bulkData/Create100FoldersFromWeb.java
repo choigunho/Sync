@@ -36,7 +36,7 @@ public class Create100FoldersFromWeb {
 	@Test
 	public void create100Folders() throws Exception {
 
-		int totalFolders = 100;
+		int totalFolders = 5;
 		
 		// 웹에서 폴더 100개 생성
 		for(int i=0; i<totalFolders; i++) {
