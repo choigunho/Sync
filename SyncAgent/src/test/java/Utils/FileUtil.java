@@ -16,10 +16,14 @@ import com.jayway.awaitility.Awaitility;
 
 public class FileUtil {
 
-	public void cleanDirectory(String userId) throws Exception {
+	public void cleanDirectory(String userId) {
 		
 		File dir = new File(System.getProperty("user.home") + "/MyDrive("+ userId + ")" + "/" );
-		FileUtils.cleanDirectory(dir);
+		try{
+			FileUtils.cleanDirectory(dir);		
+		}catch(Exception e){
+			
+		}
 	}
 
 	public void copyFile(File srcFile, File destFile, String userId) throws Exception {

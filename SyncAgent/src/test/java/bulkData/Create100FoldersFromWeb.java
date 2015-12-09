@@ -36,7 +36,7 @@ public class Create100FoldersFromWeb {
 	@Test
 	public void create100Folders() throws Exception {
 
-		int totalFolders = 100;
+		int totalFolders = 10;
 		
 		// 웹에서 폴더 100개 생성
 		for(int i=1; i<=totalFolders; i++) {
@@ -60,10 +60,7 @@ public class Create100FoldersFromWeb {
 	public void tearDown() throws Exception {	
 		
 		// 동기화 폴더 초기화
-		try{
-			fu.cleanDirectory(userId);		
-		} catch(Exception e){
-		}
+		fu.cleanDirectory(userId);		
 		
 		//Close the browser
 		driver.quit();
