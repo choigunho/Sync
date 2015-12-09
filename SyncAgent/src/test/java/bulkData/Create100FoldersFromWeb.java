@@ -42,7 +42,9 @@ public class Create100FoldersFromWeb {
 		for(int i=1; i<=totalFolders; i++) {
 			WebUtil.createFolder(driver);
 			Thread.sleep(1000);
-			WebUtil.refreshUntil60Seconds(i, driver);
+			driver.navigate().refresh();
+			Thread.sleep(1000);
+//			WebUtil.refreshUntil60Seconds(i, driver);
 		}
 		
 		// PC에서 동기화 확인
