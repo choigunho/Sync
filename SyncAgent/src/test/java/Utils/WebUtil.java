@@ -139,7 +139,7 @@ public class WebUtil {
 		WebElement btn = driver.findElement(By.className("btn_bgcolor_bl"));
 		btn.click();
 		
-		System.out.println("새로운 폴더 생성: " + folderName);
+		System.out.println("웹에서 새로운 폴더 생성: " + folderName);
 	}
 	
 	public static void deleteFolder(String folderName, WebDriver driver) throws Exception {
