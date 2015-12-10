@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -288,6 +290,20 @@ public class WebUtil {
 			if(fold.getText().equals(item)) {
 				fold.click();
 			}
+		}
+	}
+
+	public static void pageDown(int count, WebDriver driver) throws Exception {
+		
+		// Inbox 부분을 한 번 클릭해야 Page Down키가 동작함
+		WebElement subject_line = driver.findElement(By.className("subject_line"));
+		subject_line.click();
+		
+		// 페이지 다운
+		Actions action = new Actions(driver);
+		for (int i=0; i<count; i++) {
+			action.sendKeys(Keys.PAGE_DOWN).perform();
+			Thread.sleep(1 * 1000);	
 		}
 	}
 	

@@ -58,7 +58,7 @@ public class Create100Folders {
 		// PC에서폴더 100개 삭제
 		fu.cleanDirectory(userId);
 		
-		// 웹에서 동기화 확인
+		// 웹에서 삭제 확인
 		WebUtil.refreshUntil60Seconds(0, driver);
 		
 	}
@@ -66,29 +66,15 @@ public class Create100Folders {
 	@Test
 	public void create100FoldersFromPC() throws Exception {
 		
-		int totalFolders = 100;
-		
 		// PC에서 폴더 100개 생성
+		int totalFolders = 100;
 		for(int i=1; i<=totalFolders; i++) {
 			fu.createFolder(i + " new folder", userId);			
 		}
 		
 		// 웹에서 동기화 확인
-		WebUtil.refreshAfter60Seconds(driver);
-
-		// Inbox 부분을 한 번 클릭해야 Page Down키가 동작함
-		WebElement subject_line = driver.findElement(By.className("subject_line"));
-		subject_line.click();
-		
-		// 페이지 다운
-		Actions action = new Actions(driver);
-		
-		int pageDownCount = 6;
-		for (int i=0; i<pageDownCount; i++) {
-			action.sendKeys(Keys.PAGE_DOWN).perform();
-			Thread.sleep(1 * 1000);	
-		}
-		
+		WebUtil.refreshAfter60Seconds(driver); 
+		WebUtil.pageDown(6, driver); // Page Down 키 입력 (부분 렌더링된 나머지 목록을 가져오기 위함)
 		List<String> list = WebUtil.getList(driver);
 		assertEquals(totalFolders, list.size());
 		
@@ -96,6 +82,7 @@ public class Create100Folders {
 		fu.cleanDirectory(userId);
 		
 		// 웹에서 동기화 확인
+		Thread.sleep(30 * 1000);
 		WebUtil.refreshUntil60Seconds(0, driver);
 		
 	}
