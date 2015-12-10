@@ -111,7 +111,7 @@ public class FileUtil {
 		File dst = new File(System.getProperty("user.home") + "/MyDrive("+ userId + ")/" + dstDir);
 		FileUtils.moveDirectoryToDirectory(src, dst, false);
 		
-		System.out.println("PC에서 폴더 이동: " + srcDir + "->" + dstDir);
+		System.out.println("PC에서 폴더 이동: " + srcDir + " -> " + dstDir);
 	}
 	
 	public void moveFileToDirectory(File srcFile, File dstDir, String userId) throws Exception {
@@ -120,7 +120,7 @@ public class FileUtil {
 		File dst = new File(System.getProperty("user.home") + "/MyDrive("+ userId + ")/" + dstDir);
 		FileUtils.moveFileToDirectory(src, dst, false);
 		
-		System.out.println("PC에서 파일 이동: " + srcFile + "->" + dstDir);
+		System.out.println("PC에서 파일 이동: " + srcFile + " -> " + dstDir);
 	}
 	
 	public boolean renameFileDirectory(String oldName, String newName, String userId) {
@@ -129,7 +129,7 @@ public class FileUtil {
 		File newNm = new File(System.getProperty("user.home") + "/MyDrive(" + userId + ")/" + newName);
 		
 		boolean isRenamed = oldNm.renameTo(newNm);
-		System.out.println("PC에서 이름 변경: " + oldName + "->" + newName);
+		System.out.println("PC에서 이름 변경: " + oldName + " -> " + newName);
 		
 		return isRenamed;
 		
