@@ -67,11 +67,12 @@ public class WebUtil {
 				d.navigate().refresh();
 
 				List<WebElement> tbody = d.findElements(By.cssSelector("tbody[sf-virtual-repeat]"));
+				System.out.println("현재까지 동기화된 파일(폴더): " + tbody.size());
+				
 				if(tbody.size() == expectedCount){
 					return true;
 				}
 				
-				System.out.println("웹 동기화 기다리는 중...");
 				return false;
 			}
 		});
