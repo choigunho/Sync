@@ -105,28 +105,13 @@ public class WebUtil {
 		Thread.sleep(1 * 1000);
 	}
 	
-	public static void createFolder(WebDriver driver) throws Exception {
-
-		// 폴더 생성
-		(new WebDriverWait(driver, 10)).until(new ExpectedCondition<Boolean>() {
-			public Boolean apply(WebDriver d) {
-				return d.findElement(By.className("btn_folderadd")).isDisplayed();
-			}
-		});
-		WebElement btn_folderadd = driver.findElement(By.className("btn_folderadd"));
-		btn_folderadd.click();
+	public static void createManyFolders(int count, WebDriver driver) throws Exception {
 		
-//		Thread.sleep(1000);
-		
-		// 만들기 버튼 클릭
-		(new WebDriverWait(driver, 10)).until(new ExpectedCondition<Boolean>() {
-			public Boolean apply(WebDriver d) {
-				return d.findElement(By.className("btn_bgcolor_bl")).isDisplayed();
-			}
-		});
-		WebElement btn = driver.findElement(By.className("btn_bgcolor_bl"));
-		btn.click();
-		
+		for(int i = 0; i < count; i++) {
+			String folderName = "new folder " + i;
+			createFolder(folderName, driver);
+			Thread.sleep(3000);
+		}
 	}
 	
 	public static void createFolder(String folderName, WebDriver driver) throws Exception {
@@ -154,6 +139,7 @@ public class WebUtil {
 		WebElement btn = driver.findElement(By.className("btn_bgcolor_bl"));
 		btn.click();
 		
+		System.out.println("새로운 폴더 생성: " + folderName);
 	}
 	
 	public static void deleteFolder(String folderName, WebDriver driver) throws Exception {

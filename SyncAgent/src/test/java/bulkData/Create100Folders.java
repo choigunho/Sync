@@ -40,10 +40,7 @@ public class Create100Folders {
 		int totalFolders = 100;
 		
 		// 웹에서 폴더 100개 생성
-		for(int i=1; i<=totalFolders; i++) {
-			WebUtil.createFolder(driver);
-			Thread.sleep(3000);
-		}
+		WebUtil.createManyFolders(totalFolders, driver);
 		
 		// PC에서 동기화 확인
 		File targetDir = new File(File.separator);
@@ -53,6 +50,7 @@ public class Create100Folders {
 		fu.cleanDirectory(userId);
 		
 		// 웹에서 삭제 확인
+		Thread.sleep(30 * 1000);
 		WebUtil.refreshUntil60Seconds(0, driver);
 		
 	}
@@ -75,7 +73,7 @@ public class Create100Folders {
 		// PC에서폴더 100개 삭제
 		fu.cleanDirectory(userId);
 		
-		// 웹에서 동기화 확인
+		// 웹에서 삭제 확인
 		Thread.sleep(30 * 1000);
 		WebUtil.refreshUntil60Seconds(0, driver);
 		
