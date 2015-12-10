@@ -1,6 +1,7 @@
 package Utils;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -43,6 +44,8 @@ public class WebUtil {
 			WebElement name = item.findElement(By.className("file"));
 			list.add(name.getText());
 		}
+		
+		Collections.sort(list);
 		
 		System.out.println(list);
 		return list;
@@ -269,15 +272,10 @@ public class WebUtil {
 		List<WebElement> folders = driver.findElements(By.className("fold_name"));
 		
 		for(WebElement folder: folders) {
-//			if(folder.isDisplayed()){
-//				System.out.println("folder.isDisplayed()");
-//			}
-			
 			if(folder.getText().equals(dstFolder)) {
 				folder.click();
 			}
 		}
-		
 		Thread.sleep(1 * 500);
 	}
 	
@@ -297,6 +295,11 @@ public class WebUtil {
 		
 		// Inbox 부분을 한 번 클릭해야 Page Down키가 동작함
 		WebElement subject_line = driver.findElement(By.className("subject_line"));
+		(new WebDriverWait(driver, 10)).until(new ExpectedCondition<Boolean>() {
+			public Boolean apply(WebDriver d) {
+				return d.findElement(By.className("subject_line")).isDisplayed();
+			}
+		});
 		subject_line.click();
 		
 		// 페이지 다운
