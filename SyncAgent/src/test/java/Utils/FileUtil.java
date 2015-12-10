@@ -39,7 +39,7 @@ public class FileUtil {
 		
 		try {
 			await().until(checkCountCallable(respectedCount, userId, targetDir));
-			System.out.println(respectedCount + "개 파일(폴더) 동기화 성공");
+			System.out.println(respectedCount + "개 파일(폴더) 동기화 완료");
 		}catch(Exception e){
 			fail("동기화 실패!");
 		}

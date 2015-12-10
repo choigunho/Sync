@@ -273,6 +273,7 @@ public class WebUtil {
 			WebElement fold = body.findElement(By.className("file"));
 			if(fold.getText().equals(item)) {
 				fold.click();
+				System.out.println("[action log] " + item + " 클릭");
 			}
 		}
 	}

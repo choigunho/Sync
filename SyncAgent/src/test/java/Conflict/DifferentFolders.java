@@ -37,7 +37,7 @@ public class DifferentFolders {
 	public void createAtPC_createAtWEB() throws Exception {
 		
 		// pc에서 폴더 생성
-		fu.createFolder("Conflict10", userId);
+		fu.createFolder("/Conflict10", userId);
 		
 		// 웹에서 폴더 생성
 		WebUtil.createFolder("Conflict10", driver);
@@ -57,7 +57,7 @@ public class DifferentFolders {
 	public void createAtPC_renameAtWEB() throws Exception {
 		
 		// 폴더 생성 후 동기화
-		fu.createFolder("Conflict", userId);
+		fu.createFolder("/Conflict", userId);
 		WebUtil.refreshUntil60Seconds(1, driver);
 		
 		// pc에서 폴더 생성
@@ -138,7 +138,7 @@ public class DifferentFolders {
 		
 		// 폴더 생성 후 동기화
 		fu.createFolder("/Move/Conflict", userId);
-		fu.createFolder("Conflict14", userId);
+		fu.createFolder("/Conflict14", userId);
 		WebUtil.refreshUntil60Seconds(2, driver);
 		
 		// pc에서 이름 변경
