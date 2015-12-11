@@ -204,15 +204,9 @@ public class SameFolders {
 		// 웹에서 삭제
 		WebUtil.deleteFolder("Conflict6", driver);
 		
-		Thread.sleep(1 * 1000);
-		
-		// 동기화
-		WebUtil.navigateToFolder("Move", driver);
-		WebUtil.refreshUntil60Seconds(1, driver);
-		
 		// 확인(pc)
-		List<String> list = fu.getFileList("/Move", userId);
-		assertTrue(list.contains("(conflicted)Conflict6"));
+		File dir = new File("/Move");
+		fu.checkUtil60Seconds("(conflicted)Conflict6", userId, dir);
 		
 	}
 	

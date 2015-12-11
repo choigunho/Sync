@@ -44,7 +44,46 @@ public class FileUtil {
 			fail("PC 동기화 실패!");
 			e.printStackTrace();
 		}
+	}
+	
+	public void checkUtil60Seconds(String fileName, String userId, File targetDir) {
+	
+		Awaitility.setDefaultTimeout(60, TimeUnit.SECONDS);
+		Awaitility.setDefaultPollInterval(1, TimeUnit.SECONDS);
 		
+		try {
+			await().until(checkNameCollable(fileName, userId, targetDir));
+			System.out.println(fileName + " 파일(폴더) PC 동기화 완료");
+		}catch(Exception e){
+			fail("PC 동기화 실패!");
+			e.printStackTrace();
+		}
+	}
+	
+	public Callable<Boolean> checkNameCollable(final String fileName, final String userId, final File targetDir) {
+		return new Callable<Boolean>() {
+			public Boolean call() throws Exception {
+				
+				File dir = new File(System.getProperty("user.home") + "/MyDrive("+ userId + ")" + targetDir);
+				File[] fileList = dir.listFiles();
+				//System.out.println("fileList.length: " + fileList.length);
+				
+				System.out.println("PC 동기화 기다리는 중...");
+				
+				List<String> list = new ArrayList<String>();
+				for(File f: fileList){
+					if(!f.getName().equals(".cellwe.sync") && !f.getName().equals("." + userId + ".sync")) {
+						list.add(f.getName());
+					}
+				}
+				
+				if(list.contains(fileName)) {
+					return true;
+				}
+				
+				return false;
+			}
+		};
 	}
 	
 	public Callable<Boolean> checkCountCallable(final int respectedCount, final String userId, final File targetDir) {
