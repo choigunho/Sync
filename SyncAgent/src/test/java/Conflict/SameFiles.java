@@ -68,7 +68,7 @@ public class SameFiles {
 		File srcFile = new File(this.getClass().getResource("/TestFiles").getFile() + "/Conflict.pptx");
 		File destDir = new File(File.separator);
 		fu.copyFileToDirectory(srcFile, destDir, userId);
-		fu.createFolder("Move", userId);
+		fu.createFolder("/Move", userId);
 		WebUtil.refreshUntil60Seconds(2, driver);	
 		
 		// pc에서 이름 변경
@@ -153,7 +153,7 @@ public class SameFiles {
 		File srcFile = new File(this.getClass().getResource("/TestFiles").getFile() + "/Conflict.pptx");
 		File destDir = new File(File.separator);
 		fu.copyFileToDirectory(srcFile, destDir, userId);
-		fu.createFolder("Move", userId);
+		fu.createFolder("/Move", userId);
 		WebUtil.refreshUntil60Seconds(2, driver);
 		
 		// pc에서 파일 이동
@@ -187,8 +187,8 @@ public class SameFiles {
 		File srcFile = new File(this.getClass().getResource("/TestFiles").getFile() + "/Conflict.pptx");
 		File destDir = new File(File.separator);
 		fu.copyFileToDirectory(srcFile, destDir, userId);
-		fu.createFolder("MovePC", userId);
-		fu.createFolder("MoveWEB", userId);
+		fu.createFolder("/MovePC", userId);
+		fu.createFolder("/MoveWEB", userId);
 		WebUtil.refreshUntil60Seconds(3, driver);
 		
 		// pc에서 파일 이동
@@ -221,7 +221,7 @@ public class SameFiles {
 		File srcFile = new File(this.getClass().getResource("/TestFiles").getFile() + "/Conflict.pptx");
 		File destDir = new File(File.separator);
 		fu.copyFileToDirectory(srcFile, destDir, userId);
-		fu.createFolder("Move", userId);
+		fu.createFolder("/Move", userId);
 		WebUtil.refreshUntil60Seconds(2, driver);
 		
 		// pc에서 파일 이동
@@ -279,7 +279,7 @@ public class SameFiles {
 		File srcFile = new File(this.getClass().getResource("/TestFiles").getFile() + "/Conflict.pptx");
 		File destDir = new File(File.separator);
 		fu.copyFileToDirectory(srcFile, destDir, userId);
-		fu.createFolder("Move", userId);
+		fu.createFolder("/Move", userId);
 		WebUtil.refreshUntil60Seconds(2, driver);
 		
 		// pc에서 파일 삭제
