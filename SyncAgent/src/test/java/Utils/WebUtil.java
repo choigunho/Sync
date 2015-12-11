@@ -157,6 +157,8 @@ public class WebUtil {
 		WebElement btn_ok = driver.findElement(By.className("button_st6"));
 		btn_ok.click();
 		
+		System.out.println("웹에서 파일(폴더) 삭제: " + folderName);
+		
 	}
 	
 	public static void moveToFolder(String itemName, String parentFolder, WebDriver driver) throws Exception {
@@ -255,7 +257,7 @@ public class WebUtil {
 		for(WebElement folder: folders) {
 			if(folder.getText().equals(dstFolder)) {
 				folder.click();
-				System.out.println("[action log] " + dstFolder + " 폴더 이동");
+				System.out.println("[action log] " + dstFolder + " 폴더 페이지로 이동");
 			}
 		}
 		Thread.sleep(1 * 500);
