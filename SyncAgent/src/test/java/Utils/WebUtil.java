@@ -254,6 +254,7 @@ public class WebUtil {
 				btn.get(1).click();
 				System.out.println("[action log] 저장 버튼 클릭");
 				
+				System.out.println("웹에서 이름 변경: " + oldName + " -> " + newName);
 			}
 		}
 	}
