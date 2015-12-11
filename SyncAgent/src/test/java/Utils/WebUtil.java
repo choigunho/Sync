@@ -179,6 +179,8 @@ public class WebUtil {
 		btn_move.click();
 		System.out.println("[action log] 이동 버튼 클릭");
 		
+		Thread.sleep(1000);
+		
 		// 이동 경로 설정
 		(new WebDriverWait(driver, 10)).until(new ExpectedCondition<Boolean>() {
 			public Boolean apply(WebDriver d) {
