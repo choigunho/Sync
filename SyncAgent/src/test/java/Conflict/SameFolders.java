@@ -35,8 +35,8 @@ public class SameFolders {
 	public void renameAtPC_moveAtWEB() throws Exception {
 		
 		// 폴더 생성 후 동기화
-		fu.createFolder("Conflict2", userId);
-		fu.createFolder("Move", userId);
+		fu.createFolder("/Conflict2", userId);
+		fu.createFolder("/Move", userId);
 		WebUtil.refreshUntil60Seconds(2, driver);
 		
 		// pc에서 이름 변경
@@ -69,7 +69,7 @@ public class SameFolders {
 	public void renameAtPC_deleteAtWEB() throws Exception {
 		
 		// 폴더 생성 후 동기화
-		fu.createFolder("Conflict3", userId);
+		fu.createFolder("/Conflict3", userId);
 		WebUtil.refreshUntil60Seconds(1, driver);
 		
 		// pc에서 이름 변경
@@ -96,7 +96,7 @@ public class SameFolders {
 	public void renameAtPC_renameAtWEB() throws Exception {
 	
 		// Conflict1 폴더 생성 후 동기화
-		fu.createFolder("conflict1", userId);
+		fu.createFolder("/conflict1", userId);
 		WebUtil.refreshUntil60Seconds(1, driver);
 		
 		// pc에서 이름 변경
@@ -132,8 +132,8 @@ public class SameFolders {
 	public void moveAtPC_renameAtWEB() throws Exception {
 		
 		// 폴더 생성 후 동기화
-		fu.createFolder("Conflict4", userId);
-		fu.createFolder("Move", userId);
+		fu.createFolder("/Conflict4", userId);
+		fu.createFolder("/Move", userId);
 		WebUtil.refreshUntil60Seconds(2, driver);
 		
 		// pc에서 폴더 이동
@@ -163,9 +163,9 @@ public class SameFolders {
 	public void moveAtPC_moveAtWEB() throws Exception {
 		
 		// 폴더 생성 후 동기화
-		fu.createFolder("Conflict5", userId);
-		fu.createFolder("Move01", userId);
-		fu.createFolder("Move02", userId);
+		fu.createFolder("/Conflict5", userId);
+		fu.createFolder("/Move01", userId);
+		fu.createFolder("/Move02", userId);
 		WebUtil.refreshUntil60Seconds(3, driver);
 		
 		// pc에서 폴더 이동
@@ -193,8 +193,8 @@ public class SameFolders {
 	public void moveAtPC_deleteAtWEB() throws Exception {
 	
 		// 폴더 생성 후 동기화
-		fu.createFolder("Conflict6", userId);
-		fu.createFolder("Move", userId);
+		fu.createFolder("/Conflict6", userId);
+		fu.createFolder("/Move", userId);
 		WebUtil.refreshUntil60Seconds(2, driver);
 		
 		// pc에서 폴더 이동
@@ -221,7 +221,7 @@ public class SameFolders {
 	public void deleteAtPC_renameAtWEB() throws Exception {
 		
 		// 폴더 생성 후 동기화
-		fu.createFolder("Conflict7", userId);
+		fu.createFolder("/Conflict7", userId);
 		WebUtil.refreshUntil60Seconds(1, driver);
 		
 		// pc에서 삭제
@@ -247,8 +247,8 @@ public class SameFolders {
 	public void deleteAtPC_moveAtWEB() throws Exception {
 		
 		// 폴더 생성 후 동기화
-		fu.createFolder("Conflict8", userId);
-		fu.createFolder("Move", userId);
+		fu.createFolder("/Conflict8", userId);
+		fu.createFolder("/Move", userId);
 		WebUtil.refreshUntil60Seconds(2, driver);
 		
 		// pc에서 삭제
@@ -274,7 +274,7 @@ public class SameFolders {
 	public void deleteAtPC_deleteAtWEB() throws Exception {
 		
 		// 폴더 생성 후 동기화
-		fu.createFolder("Conflict9", userId);
+		fu.createFolder("/Conflict9", userId);
 		WebUtil.refreshUntil60Seconds(1, driver);
 		
 		// pc에서 삭제
