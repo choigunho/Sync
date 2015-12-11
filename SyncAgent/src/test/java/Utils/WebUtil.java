@@ -70,7 +70,7 @@ public class WebUtil {
 				d.navigate().refresh();
 
 				List<WebElement> tbody = d.findElements(By.cssSelector("tbody[sf-virtual-repeat]"));
-				System.out.println("현재까지 동기화된 파일(폴더): " + tbody.size() + " " + getList(d));
+				System.out.println("웹에서 동기화된 파일(폴더): " + tbody.size() + " " + getList(d));
 								
 				if(tbody.size() == expectedCount){
 					return true;
