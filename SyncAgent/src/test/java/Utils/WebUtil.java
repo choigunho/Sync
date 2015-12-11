@@ -174,7 +174,7 @@ public class WebUtil {
 		btn_move.click();
 		System.out.println("[action log] 이동 버튼 클릭");
 		
-		Thread.sleep(1000);
+		Thread.sleep(1500);
 		
 		List<WebElement> items = driver.findElements(By.className("jqx-tree-item-li"));
 		items.remove(0);
