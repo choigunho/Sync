@@ -25,9 +25,7 @@ public class DifferentFolders {
 	@Before
 	public void setUp() throws Exception{
 		// 동기화 폴더 초기화
-		try{
-			fu.cleanDirectory(userId);		
-		} catch(Exception e){}
+		fu.cleanDirectory(userId);		
 		
 		// 웹 로그인
 		driver = AccountUtil.login(userId, pwd);
@@ -61,7 +59,7 @@ public class DifferentFolders {
 		WebUtil.refreshUntil60Seconds(1, driver);
 		
 		// pc에서 폴더 생성
-		fu.createFolder("Conflict11", userId);
+		fu.createFolder("/Conflict11", userId);
 		
 		Thread.sleep(1 * 1000);
 		
@@ -84,8 +82,8 @@ public class DifferentFolders {
 	public void createAtPC_moveAtWEB() throws Exception {
 	
 		// 폴더 생성 후 동기화
-		fu.createFolder("Conflict12", userId);
-		fu.createFolder("Move", userId);
+		fu.createFolder("/Conflict12", userId);
+		fu.createFolder("/Move", userId);
 		WebUtil.refreshUntil60Seconds(2, driver);
 		
 		// pc에서 폴더 생성
@@ -111,7 +109,7 @@ public class DifferentFolders {
 	public void renameAtPC_createAtWEB() throws Exception {
 		
 		// 폴더 생성 후 동기화
-		fu.createFolder("Conflict", userId);
+		fu.createFolder("/Conflict", userId);
 		WebUtil.refreshUntil60Seconds(1, driver);
 		
 		// pc에서 이름 변경
@@ -170,8 +168,8 @@ public class DifferentFolders {
 	public void moveAtPC_createAtWEB() throws Exception {
 		
 		// 폴더 생성 후 동기화
-		fu.createFolder("Conflict15", userId);
-		fu.createFolder("Move", userId);
+		fu.createFolder("/Conflict15", userId);
+		fu.createFolder("/Move", userId);
 		WebUtil.refreshUntil60Seconds(2, driver);
 		
 		// pc에서 폴더 이동
@@ -200,7 +198,7 @@ public class DifferentFolders {
 		
 		// 폴더 생성 후 동기화
 		fu.createFolder("/Move/Conflict", userId);
-		fu.createFolder("Conflict16", userId);
+		fu.createFolder("/Conflict16", userId);
 		WebUtil.refreshUntil60Seconds(2, driver);
 		
 		// pc에서 폴더 이동
@@ -228,18 +226,17 @@ public class DifferentFolders {
 	@After
 	public void tearDown() throws Exception {
 
+		// 동기화 폴더 초기화
+		System.out.println("============동기화 폴더 초기화 시작============");
+		fu.cleanDirectory(userId);
+		WebUtil.refreshUntil60Seconds(0, driver);
+		
 		//Close the browser
 		driver.quit();
 		String verificationErrorString = verificationErrors.toString();
 	
 		if (!"".equals(verificationErrorString)) {
 			fail(verificationErrorString);
-		}
-		
-		// 동기화 폴더 초기화
-		try{
-			fu.cleanDirectory(userId);		
-		} catch(Exception e){
 		}
 		
 	}

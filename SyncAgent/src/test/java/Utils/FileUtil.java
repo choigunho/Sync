@@ -83,7 +83,7 @@ public class FileUtil {
 	
 	public void createFolder(String folderName, String userId) throws Exception {
 		
-		File dir = new File(System.getProperty("user.home") + "/MyDrive("+ userId + ")" + "/" + folderName);
+		File dir = new File(System.getProperty("user.home") + "/MyDrive("+ userId + ")" + folderName);
 		FileUtils.forceMkdir(dir);
 		
 		System.out.println("PC에서 폴더 생성: " + folderName);
