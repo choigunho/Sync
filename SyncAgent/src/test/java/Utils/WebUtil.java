@@ -165,7 +165,7 @@ public class WebUtil {
 	}
 	
 	public static void moveToFolder(String itemName, String parentFolder, WebDriver driver) throws Exception {
-		
+	
 		// 아이템(파일or폴더) 클릭
 		itemClick(itemName, driver);
 		
@@ -181,23 +181,16 @@ public class WebUtil {
 		
 		Thread.sleep(1000);
 		
-		// 이동 경로 설정
-		(new WebDriverWait(driver, 10)).until(new ExpectedCondition<Boolean>() {
-			public Boolean apply(WebDriver d) {
-				return d.findElement(By.className("jqx-tree-dropdown-root")).findElement(By.className("jqx-tree-dropdown")).isDisplayed();
-			}
-		});
-		WebElement popLayerList = driver.findElement(By.className("jqx-tree-dropdown-root")).findElement(By.className("jqx-tree-dropdown"));
-		List<WebElement> items = popLayerList.findElements(By.className("jqx-tree-item-li"));
+		List<WebElement> items = driver.findElements(By.className("jqx-tree-item-li"));
+		items.remove(0);
 		for(WebElement item: items) {
-			
 			if(item.getText().equals(parentFolder)) {
 				(new WebDriverWait(driver, 10)).until(new ExpectedCondition<Boolean>() {
 					public Boolean apply(WebDriver d) {
 						return d.findElement(By.className("jqx-tree-item")).isDisplayed();
 					}
 				});
-				item.findElement(By.className("jqx-tree-item")).click();;
+				item.findElement(By.className("jqx-tree-item")).click();
 				
 				WebElement ok = driver.findElement(By.id("mngOkBtn"));
 				ok.click();
@@ -206,7 +199,7 @@ public class WebUtil {
 		}
 		System.out.println("웹에서 이동: " + itemName + " -> " + parentFolder);
 	}
-
+	
 	public static void rename(String oldName, String newName, WebDriver driver) throws Exception {
 		
 		List<WebElement> tbody = driver.findElements(By.cssSelector("tbody[sf-virtual-repeat]"));
