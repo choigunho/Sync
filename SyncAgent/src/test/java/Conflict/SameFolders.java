@@ -111,8 +111,7 @@ public class SameFolders {
 		WebUtil.rename(oldName, newName2, driver);
 		
 		// 동기화
-		// 개선 필요!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-		WebUtil.refreshAfter60Seconds(driver);
+		WebUtil.refreshUntil60Seconds(newName1, driver);
 		
 		// 폴더명 변경 확인(웹)
 		List<String> list = WebUtil.getFileNameList(driver);
