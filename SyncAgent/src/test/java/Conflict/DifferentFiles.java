@@ -68,7 +68,7 @@ public class DifferentFiles {
 		File srcFile = new File(this.getClass().getResource("/TestFiles").getFile() + "/Conflict.docx");
 		File destDir = new File(File.separator);
 		fu.copyFileToDirectory(srcFile, destDir, userId);
-		fu.createFolder("Move", userId);
+		fu.createFolder("/Move", userId);
 		WebUtil.refreshUntil60Seconds(2, driver);
 		
 		// pc에서 파일 생성

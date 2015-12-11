@@ -78,7 +78,7 @@ public class FileUtil {
 		File dest = new File(System.getProperty("user.home") + "/MyDrive("+ userId + ")" + destDir);
 		FileUtils.copyFileToDirectory(srcFile, dest);
 		
-		System.out.println("PC에서 파일 복사");
+		System.out.println("PC에서 파일 복사: " + srcFile.getName() + " -> " + destDir);
 	}
 	
 	public void createFolder(String folderName, String userId) throws Exception {
