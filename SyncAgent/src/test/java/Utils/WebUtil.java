@@ -303,4 +303,9 @@ public class WebUtil {
 		}
 	}
 	
+	public static void navigateToHome(WebDriver driver) {
+		
+		driver.get(AccountUtil.getServerUrl());
+		
+	}
 }

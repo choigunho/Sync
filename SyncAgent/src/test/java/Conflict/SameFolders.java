@@ -303,6 +303,7 @@ public class SameFolders {
 		// 동기화 폴더 초기화
 		System.out.println("============동기화 폴더 초기화 시작============");
 		fu.cleanDirectory(userId);
+		WebUtil.navigateToHome(driver);
 		WebUtil.refreshUntil60Seconds(0, driver);
 		
 		//Close the browser
