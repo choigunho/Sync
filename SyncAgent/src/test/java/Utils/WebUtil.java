@@ -232,7 +232,7 @@ public class WebUtil {
 				// 이름 변경 레이블 클릭
 				(new WebDriverWait(driver, 10)).until(new ExpectedCondition<Boolean>() {
 					public Boolean apply(WebDriver d) {
-						return d.findElement(By.className("change_name")).isDisplayed();
+						return d.findElement(By.className("change_name")).isEnabled();
 					}
 				});
 				WebElement change_name = item.findElement(By.className("change_name"));
