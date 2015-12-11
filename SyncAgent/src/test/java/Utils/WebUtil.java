@@ -80,7 +80,7 @@ public class WebUtil {
 			}
 		});
 		
-		Thread.sleep(1 * 1000);
+		Thread.sleep(1 * 1500);
 	}
 	
 	public static void refreshUntil60Seconds(final String expectedName, WebDriver driver) throws Exception {
@@ -142,15 +142,10 @@ public class WebUtil {
 	
 	public static void deleteFolder(String folderName, WebDriver driver) throws Exception {
 	
-		List<WebElement> tbody = driver.findElements(By.cssSelector("tbody[sf-virtual-repeat]"));
-		for(WebElement item: tbody) {
-
-			WebElement fold = item.findElement(By.className("file"));
-			if (fold.getText().equals(folderName)) {
-				fold.click();
-			}
-		}
+		// 아이템 클릭
+		itemClick(folderName, driver);
 		
+		// 하단 메뉴에서 삭제 클릭
 		(new WebDriverWait(driver, 10)).until(new ExpectedCondition<Boolean>() {
 			public Boolean apply(WebDriver d) {
 				return d.findElement(By.className("icon_ca_w_delete")).isDisplayed();
