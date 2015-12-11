@@ -79,7 +79,7 @@ public class SameFiles {
 		// 웹에서 이동
 		String fileName = "Conflict.pptx";
 		String dstFolder = "Move";
-		WebUtil.moveFolder(fileName, dstFolder, driver);
+		WebUtil.moveToFolder(fileName, dstFolder, driver);
 		
 		// 동기화
 		File targetDir = new File("/Move");
@@ -199,7 +199,7 @@ public class SameFiles {
 		// 웹에서 파일 이동
 		String fileName = "Conflict.pptx";
 		String dstFolder = "MoveWEB";
-		WebUtil.moveFolder(fileName, dstFolder, driver);
+		WebUtil.moveToFolder(fileName, dstFolder, driver);
 		
 		// 동기화
 		File targetDir = new File("/MoveWEB");
@@ -289,7 +289,7 @@ public class SameFiles {
 		// 웹에서 파일 이동
 		String file = "Conflict.pptx";
 		String dstFolder = "Move";
-		WebUtil.moveFolder(file, dstFolder, driver);
+		WebUtil.moveToFolder(file, dstFolder, driver);
 		
 		// 동기화
 		File targetDir = new File("/Move");

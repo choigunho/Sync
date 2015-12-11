@@ -79,7 +79,7 @@ public class DifferentFiles {
 		// 웹에서 이동
 		String fileName = "Conflict.docx";
 		String dstFolder = "Move";
-		WebUtil.moveFolder(fileName, dstFolder, driver);
+		WebUtil.moveToFolder(fileName, dstFolder, driver);
 		
 		// 동기화
 		Thread.sleep(1 * 1000);
@@ -121,7 +121,7 @@ public class DifferentFiles {
 		// 웹에서 이동
 		String fileName = "Conflict_PC.docx";
 		String dstFolder = "Move";
-		WebUtil.moveFolder(fileName, dstFolder, driver);
+		WebUtil.moveToFolder(fileName, dstFolder, driver);
 		
 		// 동기화
 		File targetDir = new File("/Move");

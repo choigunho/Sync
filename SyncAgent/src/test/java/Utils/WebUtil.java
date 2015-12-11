@@ -46,8 +46,6 @@ public class WebUtil {
 		}
 		
 		Collections.sort(list);
-		
-		System.out.println(list);
 		return list;
 	}
 
@@ -72,8 +70,8 @@ public class WebUtil {
 				d.navigate().refresh();
 
 				List<WebElement> tbody = d.findElements(By.cssSelector("tbody[sf-virtual-repeat]"));
-				System.out.println("현재까지 동기화된 파일(폴더): " + tbody.size() + getList(d));
-				
+				System.out.println("현재까지 동기화된 파일(폴더): " + tbody.size() + " " + getList(d));
+								
 				if(tbody.size() == expectedCount){
 					return true;
 				}
@@ -166,10 +164,10 @@ public class WebUtil {
 		
 	}
 	
-	public static void moveFolder(String folderName, String parentFolder, WebDriver driver) throws Exception {
+	public static void moveToFolder(String itemName, String parentFolder, WebDriver driver) throws Exception {
 		
 		// 아이템(파일or폴더) 클릭
-		itemClick(folderName, driver);
+		itemClick(itemName, driver);
 		
 		// 하단 메뉴에서 이동 클릭
 		(new WebDriverWait(driver, 10)).until(new ExpectedCondition<Boolean>() {
@@ -204,6 +202,7 @@ public class WebUtil {
 				System.out.println("[action log] 확인 버튼 클릭");
 			}
 		}
+		System.out.println("웹에서 이동: " + itemName + " -> " + parentFolder);
 	}
 
 	public static void rename(String oldName, String newName, WebDriver driver) throws Exception {

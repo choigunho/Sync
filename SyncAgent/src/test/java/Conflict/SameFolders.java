@@ -49,7 +49,7 @@ public class SameFolders {
 		// 웹에서 이동
 		String folderName = "Conflict2";
 		String parentFolder = "Move";
-		WebUtil.moveFolder(folderName, parentFolder, driver);
+		WebUtil.moveToFolder(folderName, parentFolder, driver);
 		
 		// 동기화
 		File targetDir = new File("/Move");
@@ -176,7 +176,7 @@ public class SameFolders {
 		// 웹에서 이동
 		String folderName = "Conflict5";
 		String parentFolder = "Move02";
-		WebUtil.moveFolder(folderName, parentFolder, driver);
+		WebUtil.moveToFolder(folderName, parentFolder, driver);
 		
 		// 동기화
 		WebUtil.refreshAfter60Seconds(driver);
@@ -258,7 +258,7 @@ public class SameFolders {
 		// 웹에서 이동
 		String srcFolder = "Conflict8";
 		String dstFolder = "Move";
-		WebUtil.moveFolder(srcFolder, dstFolder, driver);
+		WebUtil.moveToFolder(srcFolder, dstFolder, driver);
 		
 		// 동기화
 		File targetDir = new File("/Move");

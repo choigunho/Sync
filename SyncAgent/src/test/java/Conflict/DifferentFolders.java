@@ -92,7 +92,7 @@ public class DifferentFolders {
 		// 웹에서 이동
 		String folderName = "Conflict12";
 		String parentFolder = "Move";
-		WebUtil.moveFolder(folderName, parentFolder, driver);
+		WebUtil.moveToFolder(folderName, parentFolder, driver);
 		
 		// 동기화 
 		File targetDir = new File("/Move");
@@ -147,7 +147,7 @@ public class DifferentFolders {
 		// 웹에서 이동
 		String folderName = "Conflict14";
 		String parentFolder = "Move";
-		WebUtil.moveFolder(folderName, parentFolder, driver);
+		WebUtil.moveToFolder(folderName, parentFolder, driver);
 
 		// 동기화 
 		File targetDir = new File("/Move");
