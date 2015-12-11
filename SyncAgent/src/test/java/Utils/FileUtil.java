@@ -41,7 +41,8 @@ public class FileUtil {
 			await().until(checkCountCallable(respectedCount, userId, targetDir));
 			System.out.println(respectedCount + "개 파일(폴더) PC 동기화 완료");
 		}catch(Exception e){
-			fail("동기화 실패!");
+			fail("PC 동기화 실패!");
+			e.printStackTrace();
 		}
 		
 	}
