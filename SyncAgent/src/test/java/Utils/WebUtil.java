@@ -179,6 +179,7 @@ public class WebUtil {
 		});
 		WebElement btn_move = driver.findElement(By.className("icon_ca_w_move"));
 		btn_move.click();
+		System.out.println("[action log] 이동 버튼 클릭");
 		
 		// 이동 경로 설정
 		(new WebDriverWait(driver, 10)).until(new ExpectedCondition<Boolean>() {
@@ -200,6 +201,7 @@ public class WebUtil {
 				
 				WebElement ok = driver.findElement(By.id("mngOkBtn"));
 				ok.click();
+				System.out.println("[action log] 확인 버튼 클릭");
 			}
 		}
 	}
@@ -222,17 +224,19 @@ public class WebUtil {
 				});
 				WebElement action_context = item.findElement(By.className("action_context"));
 				action_context.click();
+				System.out.println("[action log] 더보기 메뉴 열기");
 				
 				Thread.sleep(1 * 1000);
 				
 				// 이름 변경 레이블 클릭
-//				(new WebDriverWait(driver, 10)).until(new ExpectedCondition<Boolean>() {
-//					public Boolean apply(WebDriver d) {
-//						return d.findElement(By.className("change_name")).isDisplayed();
-//					}
-//				});
+				(new WebDriverWait(driver, 10)).until(new ExpectedCondition<Boolean>() {
+					public Boolean apply(WebDriver d) {
+						return d.findElement(By.className("change_name")).isDisplayed();
+					}
+				});
 				WebElement change_name = item.findElement(By.className("change_name"));
 				change_name.click();
+				System.out.println("[action log] 이름 변경 클릭");
 				
 				// 텍스트 입력
 				try{
@@ -248,6 +252,7 @@ public class WebUtil {
 				// 저장 버튼 클릭
 				List<WebElement> btn = item.findElement(By.className("editing_file")).findElements(By.className("button_st2"));
 				btn.get(1).click();
+				System.out.println("[action log] 저장 버튼 클릭");
 				
 			}
 		}
@@ -260,6 +265,7 @@ public class WebUtil {
 		for(WebElement folder: folders) {
 			if(folder.getText().equals(dstFolder)) {
 				folder.click();
+				System.out.println("[action log] " + dstFolder + " 폴더 이동");
 			}
 		}
 		Thread.sleep(1 * 500);
