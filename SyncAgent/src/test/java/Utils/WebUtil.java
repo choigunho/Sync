@@ -215,7 +215,7 @@ public class WebUtil {
 			WebElement fold = item.findElement(By.className("file"));
 			if(fold.getText().equals(oldName)) {
 
-				Thread.sleep(1 * 500);
+				Thread.sleep(1 * 1000);
 				
 				// 컨텍스트 메뉴 클릭
 				(new WebDriverWait(driver, 10)).until(new ExpectedCondition<Boolean>() {
