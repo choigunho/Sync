@@ -217,7 +217,7 @@ public class WebUtil {
 				action_context.click();
 				System.out.println("[action log] 더보기 메뉴 열기");
 				
-				Thread.sleep(1 * 1000);
+				Thread.sleep(2 * 1000);
 				
 				// 이름 변경 레이블 클릭
 				(new WebDriverWait(driver, 10)).until(new ExpectedCondition<Boolean>() {
