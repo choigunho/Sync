@@ -80,7 +80,7 @@ public class WebUtil {
 			}
 		});
 		
-		Thread.sleep(1 * 2000);
+		Thread.sleep(1 * 1000);
 	}
 	
 	public static void refreshUntil60Seconds(final String expectedName, WebDriver driver) throws Exception {
@@ -246,7 +246,7 @@ public class WebUtil {
 				List<WebElement> btn = item.findElement(By.className("editing_file")).findElements(By.className("button_st2"));
 				btn.get(1).click();
 				System.out.println("[action log] 저장 버튼 클릭");
-				
+			
 				System.out.println("웹에서 이름 변경: " + oldName + " -> " + newName);
 			}
 		}
@@ -260,6 +260,7 @@ public class WebUtil {
 			if(folder.getText().equals(dstFolder)) {
 				folder.click();
 				System.out.println("[action log] " + dstFolder + " 폴더 페이지로 이동");
+				break;
 			}
 		}
 		Thread.sleep(1000);
@@ -274,6 +275,7 @@ public class WebUtil {
 			if(fold.getText().equals(item)) {
 				fold.click();
 				System.out.println("[action log] " + item + " 클릭");
+				break;
 			}
 		}
 		Thread.sleep(1000);
