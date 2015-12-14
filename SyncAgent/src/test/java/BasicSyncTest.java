@@ -25,11 +25,8 @@ public class BasicSyncTest {
 	public void setUp() throws Exception {
 		
 		// 동기화 폴더 초기화
-		try{
-			fu.cleanDirectory(userId);		
-			
-		} catch(Exception e){
-		}
+		fu.cleanDirectory(userId);
+		
 		// 웹 로그인
 		driver = AccountUtil.login(userId, pwd);
 	}
@@ -59,7 +56,7 @@ public class BasicSyncTest {
 	public void MyDrive폴더에_폴더_한개_만들고_웹에서_확인() throws Exception {
 		
 		// 폴더 생성
-		fu.createFolder("AAA", userId);
+		fu.createFolder("/AAA", userId);
 			
 		// 60초 후 페이지 새로 고침
 		WebUtil.refreshUntil60Seconds(1, driver);
@@ -120,19 +117,18 @@ public class BasicSyncTest {
 	@After
 	public void tearDown() throws Exception {
 
+		// 동기화 폴더 초기화
+		System.out.println("============동기화 폴더 초기화 시작============");
+		fu.cleanDirectory(userId);
+		WebUtil.navigateToHome(driver);
+		WebUtil.refreshUntil60Seconds(0, driver);
+		
 		//Close the browser
 		driver.quit();
 		String verificationErrorString = verificationErrors.toString();
 	
 		if (!"".equals(verificationErrorString)) {
 			fail(verificationErrorString);
-		}
-		
-		// 동기화 폴더 초기화
-		try{
-			fu.cleanDirectory(userId);		
-			
-		} catch(Exception e){
 		}
 		
 	}

@@ -26,9 +26,7 @@ public class FolderSync {
 	public void setUp() throws Exception{
 		
 		// 동기화 폴더 초기화
-		try{
-			fu.cleanDirectory(userId);		
-		} catch(Exception e){}
+		fu.cleanDirectory(userId);		
 		
 		// 웹 로그인
 		driver = AccountUtil.login(userId, pwd);
@@ -38,7 +36,7 @@ public class FolderSync {
 	public void createAtPC() throws Exception {
 		
 		// pc에서 폴더 생성
-		fu.createFolder("New Folder", userId);
+		fu.createFolder("/New Folder", userId);
 		
 		// 웹에서 확인
 		WebUtil.refreshUntil60Seconds(1, driver);
@@ -51,7 +49,7 @@ public class FolderSync {
 	public void renameAtPC() throws Exception {
 		
 		// 폴더 생성 후 동기화
-		fu.createFolder("New Folder", userId);
+		fu.createFolder("/New Folder", userId);
 		WebUtil.refreshUntil60Seconds(1, driver);
 		
 		// PC에서 폴더명 변경
@@ -68,7 +66,7 @@ public class FolderSync {
 	public void deleteAtPC() throws Exception {
 	
 		// 폴더 생성 후 동기화
-		fu.createFolder("New Folder", userId);
+		fu.createFolder("/New Folder", userId);
 		WebUtil.refreshUntil60Seconds(1, driver);
 		
 		// PC에서 폴더 삭제
@@ -84,8 +82,8 @@ public class FolderSync {
 	public void moveAtPC() throws Exception {
 		
 		// 폴더 생성 후 동기화
-		fu.createFolder("New Folder1", userId);
-		fu.createFolder("New Folder2", userId);
+		fu.createFolder("/New Folder1", userId);
+		fu.createFolder("/New Folder2", userId);
 		WebUtil.refreshUntil60Seconds(2, driver);
 		
 		// PC에서 폴더 이동
@@ -106,18 +104,18 @@ public class FolderSync {
 	@After
 	public void tearDown() throws Exception {
 
+		// 동기화 폴더 초기화
+		System.out.println("============동기화 폴더 초기화 시작============");
+		fu.cleanDirectory(userId);
+		WebUtil.navigateToHome(driver);
+		WebUtil.refreshUntil60Seconds(0, driver);
+		
 		//Close the browser
 		driver.quit();
 		String verificationErrorString = verificationErrors.toString();
 	
 		if (!"".equals(verificationErrorString)) {
 			fail(verificationErrorString);
-		}
-		
-		// 동기화 폴더 초기화
-		try{
-			fu.cleanDirectory(userId);		
-		} catch(Exception e){
 		}
 		
 	}

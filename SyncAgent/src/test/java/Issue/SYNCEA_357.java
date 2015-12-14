@@ -24,9 +24,7 @@ public class SYNCEA_357 {
 	@Before
 	public void setUp() throws Exception{
 		// 동기화 폴더 초기화
-		try{
-			fu.cleanDirectory(userId);		
-		} catch(Exception e){}
+		fu.cleanDirectory(userId);		
 		
 		// 웹 로그인
 		driver = AccountUtil.login(userId, pwd);
@@ -36,8 +34,8 @@ public class SYNCEA_357 {
 	public void SYNCEA357_이전과_다른_EFSS응답() throws Exception {
 	
 		// A폴더, B폴더 생성
-		fu.createFolder("A", userId);
-		fu.createFolder("B", userId);
+		fu.createFolder("/A", userId);
+		fu.createFolder("/B", userId);
 				
 		// 동기화 확인
 		WebUtil.refreshUntil60Seconds(2, driver);
@@ -68,19 +66,19 @@ public class SYNCEA_357 {
 	@After
 	public void tearDown() throws Exception {
 
+		// 동기화 폴더 초기화
+		System.out.println("============동기화 폴더 초기화 시작============");
+		fu.cleanDirectory(userId);
+		WebUtil.navigateToHome(driver);
+		WebUtil.refreshUntil60Seconds(0, driver);
+		
 		//Close the browser
 		driver.quit();
 		String verificationErrorString = verificationErrors.toString();
 	
 		if (!"".equals(verificationErrorString)) {
 			fail(verificationErrorString);
-		}
-		
-		// 동기화 폴더 초기화
-		try{
-			fu.cleanDirectory(userId);		
-		} catch(Exception e){
-		}
+		}	
 		
 	}
 }
