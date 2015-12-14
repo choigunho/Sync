@@ -59,7 +59,7 @@ public class Create100Folders {
 		// PC에서 폴더 100개 생성
 		int totalFolders = 100;
 		for(int i=1; i<=totalFolders; i++) {
-			fu.createFolder(i + " new folder", userId);			
+			fu.createFolder("/New folder " + i, userId);			
 		}
 		
 		// 웹에서 동기화 확인
