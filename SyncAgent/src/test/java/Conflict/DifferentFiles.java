@@ -124,7 +124,7 @@ public class DifferentFiles {
 		WebUtil.moveToFolder(fileName, dstFolder, driver);
 		
 		// 동기화
-		File targetDir = new File("/Move");
+		String targetDir = "/Move";
 		fu.checkCountUntil60Seconds(2, userId, targetDir);
 		
 		// 확인

@@ -43,7 +43,7 @@ public class Create100Folders {
 		WebUtil.createManyFolders(totalFolders, driver);
 		
 		// PC에서 동기화 확인
-		File targetDir = new File(File.separator);
+		String targetDir = File.separator;
 		fu.checkCountUntil60Seconds(totalFolders, userId, targetDir);
 		
 		// PC에서폴더 100개 삭제

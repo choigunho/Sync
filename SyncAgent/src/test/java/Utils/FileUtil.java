@@ -32,17 +32,19 @@ public class FileUtil {
 		FileUtils.copyFile(srcFile, dest);
 	}
 	
-	public void checkCountUntil60Seconds(int respectedCount, String userId, File targetDir) {
+	public void checkCountUntil60Seconds(int respectedCount, String userId, String targetDir) {
 		
 		Awaitility.setDefaultTimeout(60, TimeUnit.SECONDS);
 		Awaitility.setDefaultPollInterval(1, TimeUnit.SECONDS);
 		
 		try {
 			await().until(checkCountCallable(respectedCount, userId, targetDir));
-			System.out.println(respectedCount + "개 파일(폴더) PC 동기화 완료: " + getFileList(targetDir.getName(), userId));
+			System.out.println(respectedCount + "개 파일(폴더) PC 동기화 완료");
+//			System.out.println(targetDir.getName());
+//			System.out.println(getFileList("/moveWEB", userId));
 		}catch(Exception e){
-			fail("PC 동기화 실패!");
 			e.printStackTrace();
+			fail("PC 동기화 실패!");
 		}
 	}
 	
@@ -86,7 +88,7 @@ public class FileUtil {
 		};
 	}
 	
-	public Callable<Boolean> checkCountCallable(final int respectedCount, final String userId, final File targetDir) {
+	public Callable<Boolean> checkCountCallable(final int respectedCount, final String userId, final String targetDir) {
 		
 		return new Callable<Boolean>() {
 			public Boolean call() throws Exception {

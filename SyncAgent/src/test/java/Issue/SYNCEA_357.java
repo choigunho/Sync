@@ -56,7 +56,7 @@ public class SYNCEA_357 {
 		WebUtil.createFolder("A", driver);
 
 		// 동기화 대기
-		File targetDir = new File("/B");
+		String targetDir = "/B";
 		fu.checkCountUntil60Seconds(2, userId, targetDir);
 		
 		List<String> fileList = fu.getFileList("/B", userId);

@@ -80,7 +80,7 @@ public class WebUtil {
 			}
 		});
 		
-		Thread.sleep(1 * 1500);
+		Thread.sleep(1 * 2000);
 	}
 	
 	public static void refreshUntil60Seconds(final String expectedName, WebDriver driver) throws Exception {
@@ -176,7 +176,7 @@ public class WebUtil {
 		btn_move.click();
 		System.out.println("[action log] 이동 버튼 클릭");
 		
-		Thread.sleep(2 * 1000);
+		Thread.sleep(1 * 1000);
 		
 		List<WebElement> items = driver.findElements(By.className("jqx-tree-item-li"));
 		items.remove(0);
@@ -262,7 +262,7 @@ public class WebUtil {
 				System.out.println("[action log] " + dstFolder + " 폴더 페이지로 이동");
 			}
 		}
-		Thread.sleep(500);
+		Thread.sleep(1000);
 	}
 	
 	public static void itemClick(String item, WebDriver driver) throws Exception {
@@ -276,7 +276,7 @@ public class WebUtil {
 				System.out.println("[action log] " + item + " 클릭");
 			}
 		}
-		Thread.sleep(500);
+		Thread.sleep(1000);
 	}
 
 	public static void pageDown(int count, WebDriver driver) throws Exception {

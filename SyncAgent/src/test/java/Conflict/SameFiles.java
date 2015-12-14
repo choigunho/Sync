@@ -51,7 +51,7 @@ public class SameFiles {
 		WebUtil.rename(oldName, newName, driver);
 		
 		// 동기화
-		File targetDir = new File(File.separator);
+		String targetDir = File.separator;
 		fu.checkCountUntil60Seconds(2, userId, targetDir);
 		
 		// 확인
@@ -82,7 +82,7 @@ public class SameFiles {
 		WebUtil.moveToFolder(fileName, dstFolder, driver);
 		
 		// 동기화
-		File targetDir = new File("/Move");
+		String targetDir = "/Move";
 		fu.checkCountUntil60Seconds(1, userId, targetDir);
 		
 		// 확인(PC) 
@@ -167,7 +167,7 @@ public class SameFiles {
 		WebUtil.rename(oldName, newName, driver);
 		
 		// 동기화
-		File targetDir = new File(File.separator);
+		String targetDir = File.separator;
 		fu.checkCountUntil60Seconds(2, userId, targetDir);
 		
 		// 확인(PC) 
@@ -202,7 +202,7 @@ public class SameFiles {
 		WebUtil.moveToFolder(fileName, dstFolder, driver);
 		
 		// 동기화
-		File targetDir = new File("/MoveWEB");
+		String targetDir = "/MoveWEB";
 		fu.checkCountUntil60Seconds(1, userId, targetDir);
 		
 		// 확인(PC) 
@@ -263,7 +263,7 @@ public class SameFiles {
 		WebUtil.rename(oldName, newName, driver);
 		
 		// 동기화
-		File targetDir = new File(File.separator);
+		String targetDir = File.separator;
 		fu.checkCountUntil60Seconds(1, userId, targetDir);
 		
 		// 확인(PC) 
@@ -292,7 +292,7 @@ public class SameFiles {
 		WebUtil.moveToFolder(file, dstFolder, driver);
 		
 		// 동기화
-		File targetDir = new File("/Move");
+		String targetDir = "/Move";
 		fu.checkCountUntil60Seconds(1, userId, targetDir);
 		
 		// 확인(PC) 

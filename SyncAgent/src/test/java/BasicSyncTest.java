@@ -81,7 +81,7 @@ public class BasicSyncTest {
 		WebUtil.createFolder("folderBychoi", driver);
 		
 		// 동기화 대기
-		File targetDir = new File(File.separator);
+		String targetDir = File.separator;
 		fu.checkCountUntil60Seconds(1, userId, targetDir);
 		
 		// 폴더 생성 확인 

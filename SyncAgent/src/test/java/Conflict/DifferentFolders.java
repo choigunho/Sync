@@ -41,7 +41,7 @@ public class DifferentFolders {
 		WebUtil.createFolder("Conflict10", driver);
 		
 		// 동기화 
-		File targetDir = new File(File.separator);
+		String targetDir = File.separator;
 		fu.checkCountUntil60Seconds(2, userId, targetDir);
 		
 		// 확인(PC) 
@@ -95,7 +95,7 @@ public class DifferentFolders {
 		WebUtil.moveToFolder(folderName, parentFolder, driver);
 		
 		// 동기화 
-		File targetDir = new File("/Move");
+		String targetDir = "/Move";
 		fu.checkCountUntil60Seconds(2, userId, targetDir);
 		
 		// 확인(PC) 
@@ -121,7 +121,7 @@ public class DifferentFolders {
 		WebUtil.createFolder("Conflict13", driver);
 		
 		// 동기화 
-		File targetDir = new File(File.separator);
+		String targetDir = File.separator;
 		fu.checkCountUntil60Seconds(2, userId, targetDir);
 		
 		// 확인(PC) 
@@ -150,7 +150,7 @@ public class DifferentFolders {
 		WebUtil.moveToFolder(folderName, parentFolder, driver);
 
 		// 동기화 
-		File targetDir = new File("/Move");
+		String targetDir = "/Move";
 		fu.checkCountUntil60Seconds(2, userId, targetDir);
 		
 		// 확인(PC) 
@@ -183,7 +183,7 @@ public class DifferentFolders {
 		WebUtil.createFolder("Conflict15", driver);
 		
 		// 동기화 
-		File targetDir = new File("/Move");
+		String targetDir = "/Move";
 		fu.checkCountUntil60Seconds(2, userId, targetDir);
 		
 		// 확인(PC) 
