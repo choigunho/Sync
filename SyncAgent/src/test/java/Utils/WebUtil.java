@@ -220,11 +220,13 @@ public class WebUtil {
 				Thread.sleep(2 * 1000);
 				
 				// 이름 변경 레이블 클릭
+				/*
 				(new WebDriverWait(driver, 10)).until(new ExpectedCondition<Boolean>() {
 					public Boolean apply(WebDriver d) {
 						return d.findElement(By.className("change_name")).isEnabled();
 					}
 				});
+				*/
 				WebElement change_name = item.findElement(By.className("change_name"));
 				change_name.click();
 				System.out.println("[action log] 이름 변경 클릭");
