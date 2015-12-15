@@ -168,14 +168,16 @@ public class WebUtil {
 		itemClick(itemName, driver);
 		
 		// 하단 메뉴에서 이동 클릭
-		(new WebDriverWait(driver, 10)).until(new ExpectedCondition<Boolean>() {
-			public Boolean apply(WebDriver d) {
-				return d.findElement(By.className("icon_ca_w_move")).isDisplayed();
-			}
-		});
-		WebElement btn_move = driver.findElement(By.className("icon_ca_w_move"));
-		btn_move.click();
-		System.out.println("[action log] 이동 버튼 클릭");
+		try{
+			WebElement btn_move = driver.findElement(By.className("icon_ca_w_move"));
+			btn_move.click();
+			System.out.println("[action log] 이동 버튼 클릭(1번째 시도)");
+		}catch(Exception e){
+			e.printStackTrace();
+			WebElement btn_move = driver.findElement(By.className("icon_ca_w_move"));
+			btn_move.click();
+			System.out.println("[action log] 이동 버튼 클릭(2번째 시도)");
+		}
 		
 		Thread.sleep(1 * 1000);
 		
