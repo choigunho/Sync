@@ -115,7 +115,7 @@ public class WebUtil {
 		WebElement btn = driver.findElement(By.className("btn_bgcolor_bl"));
 		btn.click();
 		
-		System.out.println("웹에서 새로운 폴더 생성: " + folderName);
+		System.out.println("** 웹에서 새로운 폴더 생성: " + folderName);
 	}
 	
 	public static void deleteFolder(String folderName, WebDriver driver) throws Exception {
@@ -135,7 +135,7 @@ public class WebUtil {
 		WebElement btn_ok = driver.findElement(By.className("button_st6"));
 		btn_ok.click();
 		
-		System.out.println("웹에서 파일(폴더) 삭제: " + folderName);
+		System.out.println("** 웹에서 파일(폴더) 삭제: " + folderName);
 		
 	}
 	
@@ -175,7 +175,7 @@ public class WebUtil {
 				break;
 			}
 		}
-		System.out.println("웹에서 이동: " + itemName + " -> " + parentFolder);
+		System.out.println("** 웹에서 이동: " + itemName + " -> " + parentFolder);
 	}
 	
 	public static void rename(String oldName, String newName, WebDriver driver) throws Exception {
@@ -186,8 +186,6 @@ public class WebUtil {
 			WebElement fold = item.findElement(By.className("file"));
 			if(fold.getText().equals(oldName)) {
 
-//				Thread.sleep(1 * 1000);
-				
 				// 컨텍스트 메뉴 클릭
 				(new WebDriverWait(driver, 10)).until(new ExpectedCondition<Boolean>() {
 					public Boolean apply(WebDriver d) {
@@ -198,16 +196,6 @@ public class WebUtil {
 				action_context.click();
 				System.out.println("[action log] 더보기 메뉴 열기");
 				
-//				Thread.sleep(1 * 1000);
-				
-				// 이름 변경 레이블 클릭
-				/*
-				(new WebDriverWait(driver, 10)).until(new ExpectedCondition<Boolean>() {
-					public Boolean apply(WebDriver d) {
-						return d.findElement(By.className("change_name")).isEnabled();
-					}
-				});
-				*/
 				try{
 					WebElement change_name = item.findElement(By.className("change_name"));
 					change_name.click();
@@ -236,7 +224,7 @@ public class WebUtil {
 				btn.get(1).click();
 				System.out.println("[action log] 저장 버튼 클릭");
 			
-				System.out.println("웹에서 이름 변경: " + oldName + " -> " + newName);
+				System.out.println("** 웹에서 이름 변경: " + oldName + " -> " + newName);
 			}
 		}
 	}

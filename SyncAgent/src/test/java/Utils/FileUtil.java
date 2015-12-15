@@ -25,12 +25,6 @@ public class FileUtil {
 			
 		}
 	}
-
-	public void copyFile(File srcFile, File destFile, String userId) throws Exception {
-		
-		File dest = new File(System.getProperty("user.home") + "/MyDrive("+ userId + ")" + destFile);
-		FileUtils.copyFile(srcFile, dest);
-	}
 	
 	public void checkCountUntil60Seconds(int respectedCount, String userId, String targetDir) {
 		
@@ -40,8 +34,6 @@ public class FileUtil {
 		try {
 			await().until(checkCountCallable(respectedCount, userId, targetDir));
 			System.out.println(respectedCount + "개 파일(폴더) PC 동기화 완료 " + getFileList(targetDir, userId));
-//			System.out.println(targetDir.getName());
-//			System.out.println(getFileList("/moveWEB", userId));
 		}catch(Exception e){
 			e.printStackTrace();
 			fail("PC 동기화 실패!");
@@ -68,7 +60,6 @@ public class FileUtil {
 				
 				File dir = new File(System.getProperty("user.home") + "/MyDrive("+ userId + ")" + targetDir);
 				File[] fileList = dir.listFiles();
-				//System.out.println("fileList.length: " + fileList.length);
 				
 				System.out.println("PC 동기화 기다리는 중...");
 				
@@ -78,11 +69,9 @@ public class FileUtil {
 						list.add(f.getName());
 					}
 				}
-				
 				if(list.contains(fileName)) {
 					return true;
 				}
-				
 				return false;
 			}
 		};
@@ -95,7 +84,6 @@ public class FileUtil {
 				
 				File dir = new File(System.getProperty("user.home") + "/MyDrive("+ userId + ")" + targetDir);
 				File[] fileList = dir.listFiles();
-				//System.out.println("fileList.length: " + fileList.length);
 				
 				System.out.println("PC 동기화 기다리는 중...");
 				
@@ -105,11 +93,9 @@ public class FileUtil {
 						list.add(f.getName());
 					}
 				}
-				
 				if(list.size() == respectedCount) {
 					return true;
 				}
-				
 				return false;
 			}
 		};
@@ -120,7 +106,7 @@ public class FileUtil {
 		File dest = new File(System.getProperty("user.home") + "/MyDrive("+ userId + ")" + destDir);
 		FileUtils.copyFileToDirectory(srcFile, dest);
 		
-		System.out.println("PC에서 파일 복사: " + srcFile.getName() + " -> " + destDir);
+		System.out.println("* PC에서 파일 복사: " + srcFile.getName() + " -> " + destDir);
 	}
 	
 	public void createFolder(String folderName, String userId) throws Exception {
@@ -128,7 +114,7 @@ public class FileUtil {
 		File dir = new File(System.getProperty("user.home") + "/MyDrive("+ userId + ")" + folderName);
 		FileUtils.forceMkdir(dir);
 		
-		System.out.println("PC에서 폴더 생성: " + folderName);
+		System.out.println("* PC에서 폴더 생성: " + folderName);
 	}
 	
 	// 파일&폴더 목록 가져오기
@@ -153,7 +139,7 @@ public class FileUtil {
 		File dst = new File(System.getProperty("user.home") + "/MyDrive("+ userId + ")/" + dstDir);
 		FileUtils.moveDirectoryToDirectory(src, dst, false);
 		
-		System.out.println("PC에서 폴더 이동: " + srcDir + " -> " + dstDir);
+		System.out.println("* PC에서 폴더 이동: " + srcDir + " -> " + dstDir);
 	}
 	
 	public void moveFileToDirectory(File srcFile, File dstDir, String userId) throws Exception {
@@ -162,7 +148,7 @@ public class FileUtil {
 		File dst = new File(System.getProperty("user.home") + "/MyDrive("+ userId + ")/" + dstDir);
 		FileUtils.moveFileToDirectory(src, dst, false);
 		
-		System.out.println("PC에서 파일 이동: " + srcFile + " -> " + dstDir);
+		System.out.println("* PC에서 파일 이동: " + srcFile + " -> " + dstDir);
 	}
 	
 	public boolean renameFileDirectory(String oldName, String newName, String userId) {
@@ -171,7 +157,7 @@ public class FileUtil {
 		File newNm = new File(System.getProperty("user.home") + "/MyDrive(" + userId + ")/" + newName);
 		
 		boolean isRenamed = oldNm.renameTo(newNm);
-		System.out.println("PC에서 이름 변경: " + oldName + " -> " + newName);
+		System.out.println("* PC에서 이름 변경: " + oldName + " -> " + newName);
 		
 		return isRenamed;
 		
@@ -182,7 +168,7 @@ public class FileUtil {
 		File dir = new File(System.getProperty("user.home") + "/MyDrive("+ userId + ")/" + dirName);
 		FileUtils.deleteDirectory(dir);
 		
-		System.out.println("PC에서 폴더 삭제: " + dirName);
+		System.out.println("* PC에서 폴더 삭제: " + dirName);
 	}
 	
 	public void forceDelete(String fileName, String userId) throws Exception {
@@ -190,6 +176,6 @@ public class FileUtil {
 		File file = new File(System.getProperty("user.home") + "/MyDrive("+ userId + ")/" + fileName);
 		FileUtils.forceDelete(file);
 		
-		System.out.println("PC에서 파일 삭제: " + fileName);
+		System.out.println("* PC에서 파일 삭제: " + fileName);
 	}
 }
