@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.ElementNotVisibleException;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -228,8 +229,14 @@ public class WebUtil {
 				});
 				*/
 				WebElement change_name = item.findElement(By.className("change_name"));
-				change_name.click();
-				System.out.println("[action log] 이름 변경 클릭");
+				try{
+					change_name.click();
+					System.out.println("[action log] 이름 변경 클릭");
+				}catch(ElementNotVisibleException e){
+					Thread.sleep(1 * 1000);
+					change_name.click();
+					System.out.println("[action log] 이름 변경 클릭(2번째 시도)");
+				}
 				
 				// 텍스트 입력
 				WebElement textField = item.findElement(By.id("inputFilRenm"));	
