@@ -211,14 +211,14 @@ public class WebUtil {
 				// 컨텍스트 메뉴 클릭
 				(new WebDriverWait(driver, 10)).until(new ExpectedCondition<Boolean>() {
 					public Boolean apply(WebDriver d) {
-						return d.findElement(By.className("action_context")).isDisplayed();
+						return d.findElement(By.className("icon_ca_option")).isDisplayed();
 					}
 				});
-				WebElement action_context = item.findElement(By.className("action_context"));
+				WebElement action_context = item.findElement(By.className("icon_ca_option"));
 				action_context.click();
 				System.out.println("[action log] 더보기 메뉴 열기");
 				
-				Thread.sleep(2 * 1000);
+				Thread.sleep(1 * 1000);
 				
 				// 이름 변경 레이블 클릭
 				/*
@@ -231,7 +231,7 @@ public class WebUtil {
 				WebElement change_name = item.findElement(By.className("change_name"));
 				try{
 					change_name.click();
-					System.out.println("[action log] 이름 변경 클릭");
+					System.out.println("[action log] 이름 변경 클릭(1번째 시도)");
 				}catch(ElementNotVisibleException e){
 					Thread.sleep(1 * 1000);
 					change_name.click();
@@ -239,9 +239,17 @@ public class WebUtil {
 				}
 				
 				// 텍스트 입력
-				WebElement textField = item.findElement(By.id("inputFilRenm"));	
-				textField.clear();
-				textField.sendKeys(newName);
+				try{
+					WebElement textField = item.findElement(By.id("inputFilRenm"));	
+					textField.clear();
+					textField.sendKeys(newName);
+					System.out.println("[action log] 텍스트 입력(1번째 시도)");
+				}catch(Exception e){
+					WebElement textField = item.findElement(By.id("inputFldRenm"));
+					textField.clear();
+					textField.sendKeys(newName);
+					System.out.println("[action log] 텍스트 입력(2번째 시도)");
+				}
 				
 				// 저장 버튼 클릭
 				List<WebElement> btn = item.findElement(By.className("editing_file")).findElements(By.className("button_st2"));
