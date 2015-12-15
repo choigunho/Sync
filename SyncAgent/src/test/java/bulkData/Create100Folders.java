@@ -44,13 +44,6 @@ public class Create100Folders {
 		String targetDir = File.separator;
 		fu.checkCountUntil60Seconds(totalFolders, userId, targetDir);
 		
-		// PC에서폴더 100개 삭제
-		fu.cleanDirectory(userId);
-		
-		// 웹에서 삭제 확인
-		Thread.sleep(30 * 1000);
-		WebUtil.refreshUntil60Seconds(0, driver);
-		
 	}
 	
 	@Test
@@ -67,13 +60,6 @@ public class Create100Folders {
 		WebUtil.pageDown(6, driver); // Page Down 키 입력 (부분 렌더링된 나머지 목록을 가져오기 위함)
 		List<String> list = WebUtil.getList(driver);
 		assertEquals(totalFolders, list.size());
-		
-		// PC에서폴더 100개 삭제
-		fu.cleanDirectory(userId);
-		
-		// 웹에서 삭제 확인
-		Thread.sleep(30 * 1000);
-		WebUtil.refreshUntil60Seconds(0, driver);
 		
 	}
 	
