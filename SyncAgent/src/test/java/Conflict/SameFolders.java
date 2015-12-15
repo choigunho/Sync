@@ -37,7 +37,7 @@ public class SameFolders {
 		// 폴더 생성 후 동기화
 		fu.createFolder("/Conflict2", userId);
 		fu.createFolder("/Move", userId);
-		WebUtil.refreshUntil60Seconds(2, driver);
+		WebUtil.refreshUntil90Seconds(2, driver);
 		
 		// pc에서 이름 변경
 		String oldName = "Conflict2";
@@ -70,7 +70,7 @@ public class SameFolders {
 		
 		// 폴더 생성 후 동기화
 		fu.createFolder("/Conflict3", userId);
-		WebUtil.refreshUntil60Seconds(1, driver);
+		WebUtil.refreshUntil90Seconds(1, driver);
 		
 		// pc에서 이름 변경
 		String oldName = "Conflict3";
@@ -81,7 +81,7 @@ public class SameFolders {
 		WebUtil.deleteFolder("Conflict3", driver);
 		
 		// 동기화
-		WebUtil.refreshUntil60Seconds(1, driver);
+		WebUtil.refreshUntil90Seconds(1, driver);
 		
 		// 확인(PC) 
 		List<String> list = fu.getFileList(File.separator, userId);
@@ -97,7 +97,7 @@ public class SameFolders {
 	
 		// Conflict1 폴더 생성 후 동기화
 		fu.createFolder("/conflict1", userId);
-		WebUtil.refreshUntil60Seconds(1, driver);
+		WebUtil.refreshUntil90Seconds(1, driver);
 		
 		// pc에서 이름 변경
 		String oldName = "conflict1";
@@ -133,7 +133,7 @@ public class SameFolders {
 		// 폴더 생성 후 동기화
 		fu.createFolder("/Conflict4", userId);
 		fu.createFolder("/Move", userId);
-		WebUtil.refreshUntil60Seconds(2, driver);
+		WebUtil.refreshUntil90Seconds(2, driver);
 		
 		// pc에서 폴더 이동
 		File srcDir = new File("Conflict4");
@@ -165,7 +165,7 @@ public class SameFolders {
 		fu.createFolder("/Conflict5", userId);
 		fu.createFolder("/Move01", userId);
 		fu.createFolder("/Move02", userId);
-		WebUtil.refreshUntil60Seconds(3, driver);
+		WebUtil.refreshUntil90Seconds(3, driver);
 		
 		// pc에서 폴더 이동
 		File srcDir = new File("Conflict5");
@@ -194,7 +194,7 @@ public class SameFolders {
 		// 폴더 생성 후 동기화
 		fu.createFolder("/Conflict6", userId);
 		fu.createFolder("/Move", userId);
-		WebUtil.refreshUntil60Seconds(2, driver);
+		WebUtil.refreshUntil90Seconds(2, driver);
 		
 		// pc에서 폴더 이동
 		File srcDir = new File("Conflict6");
@@ -215,7 +215,7 @@ public class SameFolders {
 		
 		// 폴더 생성 후 동기화
 		fu.createFolder("/Conflict7", userId);
-		WebUtil.refreshUntil60Seconds(1, driver);
+		WebUtil.refreshUntil90Seconds(1, driver);
 		
 		// pc에서 삭제
 		String folderName = "Conflict7";
@@ -242,7 +242,7 @@ public class SameFolders {
 		// 폴더 생성 후 동기화
 		fu.createFolder("/Conflict8", userId);
 		fu.createFolder("/Move", userId);
-		WebUtil.refreshUntil60Seconds(2, driver);
+		WebUtil.refreshUntil90Seconds(2, driver);
 		
 		// pc에서 삭제
 		String folderName = "Conflict8";
@@ -268,7 +268,7 @@ public class SameFolders {
 		
 		// 폴더 생성 후 동기화
 		fu.createFolder("/Conflict9", userId);
-		WebUtil.refreshUntil60Seconds(1, driver);
+		WebUtil.refreshUntil90Seconds(1, driver);
 		
 		// pc에서 삭제
 		String folderName = "Conflict9";
@@ -297,7 +297,7 @@ public class SameFolders {
 		System.out.println("============동기화 폴더 초기화 시작============");
 		fu.cleanDirectory(userId);
 		WebUtil.navigateToHome(driver);
-		WebUtil.refreshUntil60Seconds(0, driver);
+		WebUtil.refreshUntil90Seconds(0, driver);
 		
 		//Close the browser
 		driver.quit();

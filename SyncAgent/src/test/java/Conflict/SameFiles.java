@@ -38,7 +38,7 @@ public class SameFiles {
 		File srcFile = new File(this.getClass().getResource("/TestFiles").getFile() + "/Conflict.pptx");
 		File destDir = new File(File.separator);
 		fu.copyFileToDirectory(srcFile, destDir, userId);
-		WebUtil.refreshUntil60Seconds(1, driver);	
+		WebUtil.refreshUntil90Seconds(1, driver);	
 		
 		// pc에서 이름 변경
 		String oldName = "Conflict.pptx";
@@ -69,7 +69,7 @@ public class SameFiles {
 		File destDir = new File(File.separator);
 		fu.copyFileToDirectory(srcFile, destDir, userId);
 		fu.createFolder("/Move", userId);
-		WebUtil.refreshUntil60Seconds(2, driver);	
+		WebUtil.refreshUntil90Seconds(2, driver);	
 		
 		// pc에서 이름 변경
 		String oldName = "Conflict.pptx";
@@ -107,7 +107,7 @@ public class SameFiles {
 		File srcFile = new File(this.getClass().getResource("/TestFiles").getFile() + "/Conflict.pptx");
 		File destDir = new File(File.separator);
 		fu.copyFileToDirectory(srcFile, destDir, userId);
-		WebUtil.refreshUntil60Seconds(1, driver);	
+		WebUtil.refreshUntil90Seconds(1, driver);	
 		
 		// pc에서 이름 변경
 		String oldName = "Conflict.pptx";
@@ -118,7 +118,7 @@ public class SameFiles {
 		WebUtil.deleteFolder("Conflict.pptx", driver);
 		
 		// 동기화 
-		WebUtil.refreshUntil60Seconds(1, driver);
+		WebUtil.refreshUntil90Seconds(1, driver);
 		
 		// 확인(PC) 
 		List<String> list = fu.getFileList(File.separator, userId);
@@ -154,7 +154,7 @@ public class SameFiles {
 		File destDir = new File(File.separator);
 		fu.copyFileToDirectory(srcFile, destDir, userId);
 		fu.createFolder("/Move", userId);
-		WebUtil.refreshUntil60Seconds(2, driver);
+		WebUtil.refreshUntil90Seconds(2, driver);
 		
 		// pc에서 파일 이동
 		File src = new File("Conflict.pptx");
@@ -189,7 +189,7 @@ public class SameFiles {
 		fu.copyFileToDirectory(srcFile, destDir, userId);
 		fu.createFolder("/MovePC", userId);
 		fu.createFolder("/MoveWEB", userId);
-		WebUtil.refreshUntil60Seconds(3, driver);
+		WebUtil.refreshUntil90Seconds(3, driver);
 		
 		// pc에서 파일 이동
 		File src = new File("Conflict.pptx");
@@ -222,7 +222,7 @@ public class SameFiles {
 		File destDir = new File(File.separator);
 		fu.copyFileToDirectory(srcFile, destDir, userId);
 		fu.createFolder("/Move", userId);
-		WebUtil.refreshUntil60Seconds(2, driver);
+		WebUtil.refreshUntil90Seconds(2, driver);
 		
 		// pc에서 파일 이동
 		File src = new File("Conflict.pptx");
@@ -236,7 +236,7 @@ public class SameFiles {
 		Thread.sleep(1 * 1000);
 		Thread.sleep(1 * 1000);
 		WebUtil.navigateToFolder("Move", driver);
-		WebUtil.refreshUntil60Seconds(1, driver);
+		WebUtil.refreshUntil90Seconds(1, driver);
 		
 		// 확인(PC) 
 		List<String> list = fu.getFileList("/Move", userId);
@@ -251,7 +251,7 @@ public class SameFiles {
 		File srcFile = new File(this.getClass().getResource("/TestFiles").getFile() + "/Conflict.pptx");
 		File destDir = new File(File.separator);
 		fu.copyFileToDirectory(srcFile, destDir, userId);
-		WebUtil.refreshUntil60Seconds(1, driver);	
+		WebUtil.refreshUntil90Seconds(1, driver);	
 		
 		// pc에서 파일 삭제
 		String fileName = "Conflict.pptx";
@@ -280,7 +280,7 @@ public class SameFiles {
 		File destDir = new File(File.separator);
 		fu.copyFileToDirectory(srcFile, destDir, userId);
 		fu.createFolder("/Move", userId);
-		WebUtil.refreshUntil60Seconds(2, driver);
+		WebUtil.refreshUntil90Seconds(2, driver);
 		
 		// pc에서 파일 삭제
 		String fileName = "Conflict.pptx";
@@ -308,7 +308,7 @@ public class SameFiles {
 		File srcFile = new File(this.getClass().getResource("/TestFiles").getFile() + "/Conflict.pptx");
 		File destDir = new File(File.separator);
 		fu.copyFileToDirectory(srcFile, destDir, userId);
-		WebUtil.refreshUntil60Seconds(1, driver);
+		WebUtil.refreshUntil90Seconds(1, driver);
 				
 		// pc에서 파일 삭제
 		String fileName = "Conflict.pptx";
@@ -333,7 +333,7 @@ public class SameFiles {
 		System.out.println("============동기화 폴더 초기화 시작============");
 		fu.cleanDirectory(userId);
 		WebUtil.navigateToHome(driver);
-		WebUtil.refreshUntil60Seconds(0, driver);
+		WebUtil.refreshUntil90Seconds(0, driver);
 		
 		//Close the browser
 		driver.quit();

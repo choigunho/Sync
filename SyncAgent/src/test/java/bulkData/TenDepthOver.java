@@ -41,27 +41,27 @@ public class TenDepthOver {
 		fu.copyFileToDirectory(srcFile, destDir, userId);
 		
 		// 웹에서 동기화 확인
-		WebUtil.refreshUntil60Seconds(1, driver);
+		WebUtil.refreshUntil90Seconds(1, driver);
 		WebUtil.navigateToFolder("1", driver);
-		WebUtil.refreshUntil60Seconds(1, driver);
+		WebUtil.refreshUntil90Seconds(1, driver);
 		WebUtil.navigateToFolder("2", driver);
-		WebUtil.refreshUntil60Seconds(1, driver);
+		WebUtil.refreshUntil90Seconds(1, driver);
 		WebUtil.navigateToFolder("3", driver);
-		WebUtil.refreshUntil60Seconds(1, driver);
+		WebUtil.refreshUntil90Seconds(1, driver);
 		WebUtil.navigateToFolder("4", driver);
-		WebUtil.refreshUntil60Seconds(1, driver);
+		WebUtil.refreshUntil90Seconds(1, driver);
 		WebUtil.navigateToFolder("5", driver);
-		WebUtil.refreshUntil60Seconds(1, driver);
+		WebUtil.refreshUntil90Seconds(1, driver);
 		WebUtil.navigateToFolder("6", driver);
-		WebUtil.refreshUntil60Seconds(1, driver);
+		WebUtil.refreshUntil90Seconds(1, driver);
 		WebUtil.navigateToFolder("7", driver);
-		WebUtil.refreshUntil60Seconds(1, driver);
+		WebUtil.refreshUntil90Seconds(1, driver);
 		WebUtil.navigateToFolder("8", driver);
-		WebUtil.refreshUntil60Seconds(1, driver);
+		WebUtil.refreshUntil90Seconds(1, driver);
 		WebUtil.navigateToFolder("9", driver);
-		WebUtil.refreshUntil60Seconds(1, driver);
+		WebUtil.refreshUntil90Seconds(1, driver);
 		WebUtil.navigateToFolder("10", driver);
-		WebUtil.refreshUntil60Seconds(1, driver);
+		WebUtil.refreshUntil90Seconds(1, driver);
 		
 		List<String> list = WebUtil.getList(driver);
 		assertTrue("웹에서 파일 동기화 실패!", list.contains("File_DOCX.docx"));
@@ -75,7 +75,7 @@ public class TenDepthOver {
 		System.out.println("============동기화 폴더 초기화 시작============");
 		fu.cleanDirectory(userId);
 		WebUtil.navigateToHome(driver);
-		WebUtil.refreshUntil60Seconds(0, driver);
+		WebUtil.refreshUntil90Seconds(0, driver);
 		
 		//Close the browser
 		driver.quit();

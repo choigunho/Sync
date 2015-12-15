@@ -40,10 +40,10 @@ public class BasicSyncTest {
 		fu.copyFileToDirectory(srcFile, destDir, userId);
 		
 		// 60초 후 페이지 새로 고침
-		WebUtil.refreshUntil60Seconds(1, driver);
+		WebUtil.refreshUntil90Seconds(1, driver);
 				
 		// 파일 갯수 확인
-		WebUtil.refreshUntil60Seconds(1, driver);
+		WebUtil.refreshUntil90Seconds(1, driver);
 
 		// 파일명 확인
 		List<String> list = WebUtil.getList(driver);
@@ -58,10 +58,10 @@ public class BasicSyncTest {
 		fu.createFolder("/AAA", userId);
 			
 		// 60초 후 페이지 새로 고침
-		WebUtil.refreshUntil60Seconds(1, driver);
+		WebUtil.refreshUntil90Seconds(1, driver);
 		
 		// 폴더 갯수 확인
-		WebUtil.refreshUntil60Seconds(1, driver);
+		WebUtil.refreshUntil90Seconds(1, driver);
 				
 		// 폴더명 확인
 		List<String> list = WebUtil.getList(driver);
@@ -119,7 +119,7 @@ public class BasicSyncTest {
 		System.out.println("============동기화 폴더 초기화 시작============");
 		fu.cleanDirectory(userId);
 		WebUtil.navigateToHome(driver);
-		WebUtil.refreshUntil60Seconds(0, driver);
+		WebUtil.refreshUntil90Seconds(0, driver);
 		
 		//Close the browser
 		driver.quit();

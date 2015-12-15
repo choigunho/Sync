@@ -38,7 +38,7 @@ public class SYNCEA_357 {
 		fu.createFolder("/B", userId);
 				
 		// 동기화 확인
-		WebUtil.refreshUntil60Seconds(2, driver);
+		WebUtil.refreshUntil90Seconds(2, driver);
 		List<String> list = WebUtil.getList(driver);
 		assertTrue(list.contains("A"));
 		assertTrue(list.contains("B"));
@@ -70,7 +70,7 @@ public class SYNCEA_357 {
 		System.out.println("============동기화 폴더 초기화 시작============");
 		fu.cleanDirectory(userId);
 		WebUtil.navigateToHome(driver);
-		WebUtil.refreshUntil60Seconds(0, driver);
+		WebUtil.refreshUntil90Seconds(0, driver);
 		
 		//Close the browser
 		driver.quit();

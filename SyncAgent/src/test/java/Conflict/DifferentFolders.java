@@ -56,7 +56,7 @@ public class DifferentFolders {
 		
 		// 폴더 생성 후 동기화
 		fu.createFolder("/Conflict", userId);
-		WebUtil.refreshUntil60Seconds(1, driver);
+		WebUtil.refreshUntil90Seconds(1, driver);
 		
 		// pc에서 폴더 생성
 		fu.createFolder("/Conflict11", userId);
@@ -69,7 +69,7 @@ public class DifferentFolders {
 		WebUtil.rename(oldName, newName, driver);
 		
 		// 동기화 
-		WebUtil.refreshUntil60Seconds(2, driver);
+		WebUtil.refreshUntil90Seconds(2, driver);
 		
 		// 확인(PC) 
 		List<String> list = fu.getFileList(File.separator, userId);
@@ -84,7 +84,7 @@ public class DifferentFolders {
 		// 폴더 생성 후 동기화
 		fu.createFolder("/Conflict12", userId);
 		fu.createFolder("/Move", userId);
-		WebUtil.refreshUntil60Seconds(2, driver);
+		WebUtil.refreshUntil90Seconds(2, driver);
 		
 		// pc에서 폴더 생성
 		fu.createFolder("/Move/Conflict12", userId);
@@ -110,7 +110,7 @@ public class DifferentFolders {
 		
 		// 폴더 생성 후 동기화
 		fu.createFolder("/Conflict", userId);
-		WebUtil.refreshUntil60Seconds(1, driver);
+		WebUtil.refreshUntil90Seconds(1, driver);
 		
 		// pc에서 이름 변경
 		String oldName = "Conflict";
@@ -137,7 +137,7 @@ public class DifferentFolders {
 		// 폴더 생성 후 동기화
 		fu.createFolder("/Move/Conflict", userId);
 		fu.createFolder("/Conflict14", userId);
-		WebUtil.refreshUntil60Seconds(2, driver);
+		WebUtil.refreshUntil90Seconds(2, driver);
 		
 		// pc에서 이름 변경
 		String oldName = "/Move/Conflict";
@@ -170,7 +170,7 @@ public class DifferentFolders {
 		// 폴더 생성 후 동기화
 		fu.createFolder("/Conflict15", userId);
 		fu.createFolder("/Move", userId);
-		WebUtil.refreshUntil60Seconds(2, driver);
+		WebUtil.refreshUntil90Seconds(2, driver);
 		
 		// pc에서 폴더 이동
 		File srcDir = new File("Conflict15");
@@ -199,7 +199,7 @@ public class DifferentFolders {
 		// 폴더 생성 후 동기화
 		fu.createFolder("/Move/Conflict", userId);
 		fu.createFolder("/Conflict16", userId);
-		WebUtil.refreshUntil60Seconds(2, driver);
+		WebUtil.refreshUntil90Seconds(2, driver);
 		
 		// pc에서 폴더 이동
 		File srcDir = new File("Conflict16");
@@ -214,7 +214,7 @@ public class DifferentFolders {
 		WebUtil.rename(oldName, newName, driver);
 		
 		// 동기화 
-		WebUtil.refreshUntil60Seconds(2, driver);
+		WebUtil.refreshUntil90Seconds(2, driver);
 		
 		// 확인(PC) 
 		List<String> list = fu.getFileList("/Move", userId);
@@ -230,7 +230,7 @@ public class DifferentFolders {
 		System.out.println("============동기화 폴더 초기화 시작============");
 		fu.cleanDirectory(userId);
 		WebUtil.navigateToHome(driver);
-		WebUtil.refreshUntil60Seconds(0, driver);
+		WebUtil.refreshUntil90Seconds(0, driver);
 		
 		//Close the browser
 		driver.quit();

@@ -39,7 +39,7 @@ public class DifferentFiles {
 		File srcFile = new File(this.getClass().getResource("/TestFiles").getFile() + "/Conflict.docx");
 		File destDir = new File(File.separator);
 		fu.copyFileToDirectory(srcFile, destDir, userId);
-		WebUtil.refreshUntil60Seconds(1, driver);
+		WebUtil.refreshUntil90Seconds(1, driver);
 		
 		// pc에서 파일 생성
 		srcFile = new File(this.getClass().getResource("/TestFiles").getFile() + "/Conflict_PC.docx");
@@ -52,7 +52,7 @@ public class DifferentFiles {
 		WebUtil.rename(oldName, newName, driver);
 		
 		// 동기화
-		WebUtil.refreshUntil60Seconds(2, driver);
+		WebUtil.refreshUntil90Seconds(2, driver);
 		
 		// 확인
 		List<String> list = fu.getFileList(File.separator, userId);
@@ -69,7 +69,7 @@ public class DifferentFiles {
 		File destDir = new File(File.separator);
 		fu.copyFileToDirectory(srcFile, destDir, userId);
 		fu.createFolder("/Move", userId);
-		WebUtil.refreshUntil60Seconds(2, driver);
+		WebUtil.refreshUntil90Seconds(2, driver);
 		
 		// pc에서 파일 생성
 		srcFile = new File(this.getClass().getResource("/TestFiles").getFile() + "/Conflict.docx");
@@ -85,7 +85,7 @@ public class DifferentFiles {
 		Thread.sleep(1 * 1000);
 		Thread.sleep(1 * 1000);
 		WebUtil.navigateToFolder("Move", driver);
-		WebUtil.refreshUntil60Seconds(2, driver);
+		WebUtil.refreshUntil90Seconds(2, driver);
 		
 		// 확인
 		List<String> list = fu.getFileList("/Move", userId);
@@ -106,9 +106,9 @@ public class DifferentFiles {
 		destDir = new File("/Move");
 		fu.copyFileToDirectory(srcFile, destDir, userId);
 		
-		WebUtil.refreshUntil60Seconds(2, driver);
+		WebUtil.refreshUntil90Seconds(2, driver);
 		WebUtil.navigateToFolder("Move", driver);
-		WebUtil.refreshUntil60Seconds(1, driver);
+		WebUtil.refreshUntil90Seconds(1, driver);
 		driver.navigate().back();
 		driver.navigate().refresh();
 		Thread.sleep(1 * 1000);
@@ -146,9 +146,9 @@ public class DifferentFiles {
 		destDir = new File("/Move");
 		fu.copyFileToDirectory(srcFile, destDir, userId);
 		
-		WebUtil.refreshUntil60Seconds(2, driver);
+		WebUtil.refreshUntil90Seconds(2, driver);
 		WebUtil.navigateToFolder("Move", driver);
-		WebUtil.refreshUntil60Seconds(1, driver);
+		WebUtil.refreshUntil90Seconds(1, driver);
 		
 		// pc에서 파일 이동
 		File src = new File("Conflict_PC.docx");
@@ -161,7 +161,7 @@ public class DifferentFiles {
 		WebUtil.rename(oldName, newName, driver);
 		
 		// 동기화
-		WebUtil.refreshUntil60Seconds(2, driver);
+		WebUtil.refreshUntil90Seconds(2, driver);
 	
 		// 확인
 		List<String> list = fu.getFileList("/Move", userId);
@@ -178,7 +178,7 @@ public class DifferentFiles {
 		System.out.println("============동기화 폴더 초기화 시작============");
 		fu.cleanDirectory(userId);
 		WebUtil.navigateToHome(driver);
-		WebUtil.refreshUntil60Seconds(0, driver);
+		WebUtil.refreshUntil90Seconds(0, driver);
 		
 		//Close the browser
 		driver.quit();

@@ -39,7 +39,7 @@ public class FolderSync {
 		fu.createFolder("/New Folder", userId);
 		
 		// 웹에서 확인
-		WebUtil.refreshUntil60Seconds(1, driver);
+		WebUtil.refreshUntil90Seconds(1, driver);
 		List<String> list = WebUtil.getList(driver);
 		assertTrue("웹에서 파일 동기화 실패!", list.contains("New Folder"));
 		
@@ -50,7 +50,7 @@ public class FolderSync {
 		
 		// 폴더 생성 후 동기화
 		fu.createFolder("/New Folder", userId);
-		WebUtil.refreshUntil60Seconds(1, driver);
+		WebUtil.refreshUntil90Seconds(1, driver);
 		
 		// PC에서 폴더명 변경
 		String oldName = "New Folder";
@@ -67,14 +67,14 @@ public class FolderSync {
 	
 		// 폴더 생성 후 동기화
 		fu.createFolder("/New Folder", userId);
-		WebUtil.refreshUntil60Seconds(1, driver);
+		WebUtil.refreshUntil90Seconds(1, driver);
 		
 		// PC에서 폴더 삭제
 		String fileName = "New Folder";
 		fu.forceDelete(fileName, userId);
 		
 		// 웹에서 확인
-		WebUtil.refreshUntil60Seconds(0, driver);
+		WebUtil.refreshUntil90Seconds(0, driver);
 		
 	}
 	
@@ -84,7 +84,7 @@ public class FolderSync {
 		// 폴더 생성 후 동기화
 		fu.createFolder("/New Folder1", userId);
 		fu.createFolder("/New Folder2", userId);
-		WebUtil.refreshUntil60Seconds(2, driver);
+		WebUtil.refreshUntil90Seconds(2, driver);
 		
 		// PC에서 폴더 이동
 		File srcDir = new File("New Folder1");
@@ -93,7 +93,7 @@ public class FolderSync {
 		
 		// 웹에서 확인
 		WebUtil.navigateToFolder("New Folder2", driver);
-		WebUtil.refreshUntil60Seconds(1, driver);
+		WebUtil.refreshUntil90Seconds(1, driver);
 		
 		List<String> list = WebUtil.getList(driver);
 		assertTrue("웹에서 폴더 동기화 실패!", list.contains("New Folder1"));
@@ -108,7 +108,7 @@ public class FolderSync {
 		System.out.println("============동기화 폴더 초기화 시작============");
 		fu.cleanDirectory(userId);
 		WebUtil.navigateToHome(driver);
-		WebUtil.refreshUntil60Seconds(0, driver);
+		WebUtil.refreshUntil90Seconds(0, driver);
 		
 		//Close the browser
 		driver.quit();

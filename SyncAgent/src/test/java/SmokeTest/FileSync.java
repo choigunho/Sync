@@ -41,7 +41,7 @@ public class FileSync {
 		fu.copyFileToDirectory(srcFile, destDir, userId);
 		
 		// 웹에서 동기화 확인
-		WebUtil.refreshUntil60Seconds(1, driver);
+		WebUtil.refreshUntil90Seconds(1, driver);
 		List<String> list = WebUtil.getList(driver);
 		assertTrue("웹에서 파일 동기화 실패!", list.contains("File_DOCX.docx"));
 		
@@ -54,7 +54,7 @@ public class FileSync {
 		File srcFile = new File(this.getClass().getResource("/TestFiles").getFile() + "/File_DOCX.docx");
 		File destDir = new File(File.separator);
 		fu.copyFileToDirectory(srcFile, destDir, userId);
-		WebUtil.refreshUntil60Seconds(1, driver);
+		WebUtil.refreshUntil90Seconds(1, driver);
 		
 		// pc에서 파일명 변경
 		String oldName = "File_DOCX.docx";
@@ -73,14 +73,14 @@ public class FileSync {
 		File srcFile = new File(this.getClass().getResource("/TestFiles").getFile() + "/File_DOCX.docx");
 		File destDir = new File(File.separator);
 		fu.copyFileToDirectory(srcFile, destDir, userId);
-		WebUtil.refreshUntil60Seconds(1, driver);
+		WebUtil.refreshUntil90Seconds(1, driver);
 		
 		// pc에서 파일 삭제
 		String fileName = "File_DOCX.docx";
 		fu.forceDelete(fileName, userId);
 		
 		// 웹에서 삭제 확인
-		WebUtil.refreshUntil60Seconds(0, driver);
+		WebUtil.refreshUntil90Seconds(0, driver);
 		
 	}
 	
@@ -92,7 +92,7 @@ public class FileSync {
 		File destDir = new File(File.separator);
 		fu.copyFileToDirectory(srcFile, destDir, userId);
 		fu.createFolder("/Move", userId);
-		WebUtil.refreshUntil60Seconds(2, driver);
+		WebUtil.refreshUntil90Seconds(2, driver);
 		
 		// pc에서 파일 이동
 		File src = new File("File_DOCX.docx");
@@ -100,7 +100,7 @@ public class FileSync {
 		fu.moveFileToDirectory(src, dstDir, userId);
 		
 		WebUtil.navigateToFolder("Move", driver);
-		WebUtil.refreshUntil60Seconds(1, driver);
+		WebUtil.refreshUntil90Seconds(1, driver);
 		
 		// 웹에서 동기화 확인
 		List<String> list = WebUtil.getList(driver);
@@ -115,7 +115,7 @@ public class FileSync {
 		System.out.println("============동기화 폴더 초기화 시작============");
 		fu.cleanDirectory(userId);
 		WebUtil.navigateToHome(driver);
-		WebUtil.refreshUntil60Seconds(0, driver);
+		WebUtil.refreshUntil90Seconds(0, driver);
 		
 		//Close the browser
 		driver.quit();

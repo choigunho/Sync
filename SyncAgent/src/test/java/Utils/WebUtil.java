@@ -42,10 +42,10 @@ public class WebUtil {
 		Thread.sleep(1 * 1000);
 	}
 	
-	// 1초 간격으로 파일 and 폴더의 개수 확인(60초 동안)
-	public static void refreshUntil60Seconds(final int expectedCount, WebDriver driver) throws Exception {
+	// 1초 간격으로 파일 and 폴더의 개수 확인(90초 동안)
+	public static void refreshUntil90Seconds(final int expectedCount, WebDriver driver) throws Exception {
 		
-		(new WebDriverWait(driver, 60)).until(new ExpectedCondition<Boolean>() {
+		(new WebDriverWait(driver, 90)).until(new ExpectedCondition<Boolean>() {
 			public Boolean apply(WebDriver d) {
 				
 				d.navigate().refresh();
