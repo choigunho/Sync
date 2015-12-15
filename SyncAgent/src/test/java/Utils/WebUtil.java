@@ -14,19 +14,6 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class WebUtil {
-
-	public static List<String> getFileNameList(WebDriver driver) {
-		
-		List<String> list = new ArrayList<String>();
-		
-		List<WebElement> items = driver.findElements(By.className("subject_line"));
-		
-		for(WebElement item: items) {
-			list.add(item.getText());
-		}
-		
-		return list;
-	}
 	
 	public static List<String> getList(WebDriver driver) {
 		
@@ -82,7 +69,7 @@ public class WebUtil {
 				
 				d.navigate().refresh();
 
-				List<String> list = WebUtil.getFileNameList(d);
+				List<String> list = WebUtil.getList(d);
 				System.out.println("웹에서 동기화된 파일(폴더): " + list);
 				
 				if(list.contains(expectedName)) {

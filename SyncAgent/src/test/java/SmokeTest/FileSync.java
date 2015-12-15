@@ -42,7 +42,7 @@ public class FileSync {
 		
 		// 웹에서 동기화 확인
 		WebUtil.refreshUntil60Seconds(1, driver);
-		List<String> list = WebUtil.getFileNameList(driver);
+		List<String> list = WebUtil.getList(driver);
 		assertTrue("웹에서 파일 동기화 실패!", list.contains("File_DOCX.docx"));
 		
 	}

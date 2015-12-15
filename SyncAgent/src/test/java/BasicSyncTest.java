@@ -46,7 +46,7 @@ public class BasicSyncTest {
 		WebUtil.refreshUntil60Seconds(1, driver);
 
 		// 파일명 확인
-		List<String> list = WebUtil.getFileNameList(driver);
+		List<String> list = WebUtil.getList(driver);
 		assertTrue(list.contains("File_DOCX.docx"));
 		
 	}
@@ -64,7 +64,7 @@ public class BasicSyncTest {
 		WebUtil.refreshUntil60Seconds(1, driver);
 				
 		// 폴더명 확인
-		List<String> list = WebUtil.getFileNameList(driver);
+		List<String> list = WebUtil.getList(driver);
 		assertTrue(list.contains("AAA"));
 		
 	}

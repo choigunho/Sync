@@ -88,7 +88,7 @@ public class SameFolders {
 		assertTrue(list.contains("(conflicted)Conflict3_PC"));
 	
 		// 확인(웹)
-		list = WebUtil.getFileNameList(driver);
+		list = WebUtil.getList(driver);
 		assertTrue(list.contains("(conflicted)Conflict3_PC"));
 	}
 	
@@ -114,7 +114,7 @@ public class SameFolders {
 		WebUtil.refreshUntil60Seconds(newName1, driver);
 		
 		// 폴더명 변경 확인(웹)
-		List<String> list = WebUtil.getFileNameList(driver);
+		List<String> list = WebUtil.getList(driver);
 		assertTrue(list.contains(newName1));
 		assertFalse(list.contains(oldName));
 		assertFalse(list.contains(newName2));
@@ -285,7 +285,7 @@ public class SameFolders {
 		assertFalse(list.contains("Conflict9"));
 		
 		// 확인(웹)
-		list = WebUtil.getFileNameList(driver);
+		list = WebUtil.getList(driver);
 		assertFalse(list.contains("Conflict9"));
 		
 	}

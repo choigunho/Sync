@@ -39,7 +39,7 @@ public class SYNCEA_357 {
 				
 		// 동기화 확인
 		WebUtil.refreshUntil60Seconds(2, driver);
-		List<String> list = WebUtil.getFileNameList(driver);
+		List<String> list = WebUtil.getList(driver);
 		assertTrue(list.contains("A"));
 		assertTrue(list.contains("B"));
 		
