@@ -15,13 +15,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class WebUtil {
 
-	public static int countFileAndFolders(WebDriver driver) {
-		
-		// 동기화 확인
-		List<WebElement> links = driver.findElements(By.className("subject_line"));
-		return links.size() - 2;
-	}
-	
 	public static List<String> getFileNameList(WebDriver driver) {
 		
 		List<String> list = new ArrayList<String>();
@@ -62,7 +55,7 @@ public class WebUtil {
 		Thread.sleep(1 * 1000);
 	}
 	
-	// 1초 간격으로 라인의 개수 확인(60초 동안)
+	// 1초 간격으로 파일 and 폴더의 개수 확인(60초 동안)
 	public static void refreshUntil60Seconds(final int expectedCount, WebDriver driver) throws Exception {
 		
 		(new WebDriverWait(driver, 60)).until(new ExpectedCondition<Boolean>() {
@@ -76,11 +69,9 @@ public class WebUtil {
 				if(tbody.size() == expectedCount){
 					return true;
 				}
-				
 				return false;
 			}
 		});
-		
 		Thread.sleep(1 * 1000);
 	}
 	
@@ -92,15 +83,14 @@ public class WebUtil {
 				d.navigate().refresh();
 
 				List<String> list = WebUtil.getFileNameList(d);
+				System.out.println("웹에서 동기화된 파일(폴더): " + list);
+				
 				if(list.contains(expectedName)) {
 					return true;
 				}
-				
-				System.out.println("웹 동기화 기다리는 중...");
 				return false;
 			}
 		});
-		
 		Thread.sleep(1 * 1000);
 	}
 	
