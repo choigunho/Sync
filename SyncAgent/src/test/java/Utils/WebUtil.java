@@ -232,15 +232,9 @@ public class WebUtil {
 				System.out.println("[action log] 이름 변경 클릭");
 				
 				// 텍스트 입력
-				try{
-					WebElement textField = item.findElement(By.id("inputFilRenm"));	
-					textField.clear();
-					textField.sendKeys(newName);
-				}catch(Exception e){
-					WebElement textField = item.findElement(By.id("inputFldRenm"));
-					textField.clear();
-					textField.sendKeys(newName);
-				}
+				WebElement textField = item.findElement(By.id("inputFilRenm"));	
+				textField.clear();
+				textField.sendKeys(newName);
 				
 				// 저장 버튼 클릭
 				List<WebElement> btn = item.findElement(By.className("editing_file")).findElements(By.className("button_st2"));
