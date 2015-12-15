@@ -193,6 +193,7 @@ public class WebUtil {
 				WebElement ok = driver.findElement(By.id("mngOkBtn"));
 				ok.click();
 				System.out.println("[action log] 확인 버튼 클릭");
+				break;
 			}
 		}
 		System.out.println("웹에서 이동: " + itemName + " -> " + parentFolder);
@@ -228,12 +229,12 @@ public class WebUtil {
 					}
 				});
 				*/
-				WebElement change_name = item.findElement(By.className("change_name"));
 				try{
+					WebElement change_name = item.findElement(By.className("change_name"));
 					change_name.click();
 					System.out.println("[action log] 이름 변경 클릭(1번째 시도)");
 				}catch(ElementNotVisibleException e){
-					Thread.sleep(1 * 1000);
+					WebElement change_name = item.findElement(By.className("change_name"));
 					change_name.click();
 					System.out.println("[action log] 이름 변경 클릭(2번째 시도)");
 				}
