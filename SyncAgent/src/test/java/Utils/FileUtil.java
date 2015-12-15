@@ -39,7 +39,7 @@ public class FileUtil {
 		
 		try {
 			await().until(checkCountCallable(respectedCount, userId, targetDir));
-			System.out.println(respectedCount + "개 파일(폴더) PC 동기화 완료");
+			System.out.println(respectedCount + "개 파일(폴더) PC 동기화 완료 " + getFileList(targetDir, userId));
 //			System.out.println(targetDir.getName());
 //			System.out.println(getFileList("/moveWEB", userId));
 		}catch(Exception e){
