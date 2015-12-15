@@ -26,9 +26,7 @@ public class TenDepthOver {
 	public void setUp() throws Exception{
 		
 		// 동기화 폴더 초기화
-		try{
-			fu.cleanDirectory(userId);		
-		} catch(Exception e){}
+		fu.cleanDirectory(userId);		
 		
 		// 웹 로그인
 		driver = AccountUtil.login(userId, pwd);
@@ -70,23 +68,21 @@ public class TenDepthOver {
 		
 	}
 	
-	
-	
 	@After
 	public void tearDown() throws Exception {
 
+		// 동기화 폴더 초기화
+		System.out.println("============동기화 폴더 초기화 시작============");
+		fu.cleanDirectory(userId);
+		WebUtil.navigateToHome(driver);
+		WebUtil.refreshUntil60Seconds(0, driver);
+		
 		//Close the browser
 		driver.quit();
 		String verificationErrorString = verificationErrors.toString();
 	
 		if (!"".equals(verificationErrorString)) {
 			fail(verificationErrorString);
-		}
-		
-		// 동기화 폴더 초기화
-		try{
-			fu.cleanDirectory(userId);		
-		} catch(Exception e){
 		}
 		
 	}
