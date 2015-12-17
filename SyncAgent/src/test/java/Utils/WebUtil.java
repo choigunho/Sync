@@ -236,7 +236,7 @@ public class WebUtil {
 		for(WebElement folder: folders) {
 			if(folder.getText().equals(dstFolder)) {
 				folder.click();
-				System.out.println("[action log] " + dstFolder + " 폴더 페이지로 이동");
+				System.out.println("** " + dstFolder + " 폴더 페이지로 이동");
 				break;
 			}
 		}
