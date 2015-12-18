@@ -11,8 +11,6 @@ import Utils.FileUtil;
 import Utils.WebUtil;
 import static org.junit.Assert.*;
 
-//test
-
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class BasicSyncTest {
 	
