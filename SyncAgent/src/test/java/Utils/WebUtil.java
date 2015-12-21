@@ -187,15 +187,19 @@ public class WebUtil {
 			if(fold.getText().equals(oldName)) {
 
 				// 컨텍스트 메뉴 클릭
-				(new WebDriverWait(driver, 10)).until(new ExpectedCondition<Boolean>() {
-					public Boolean apply(WebDriver d) {
-						return d.findElement(By.className("icon_ca_option")).isDisplayed();
-					}
-				});
-				WebElement action_context = item.findElement(By.className("icon_ca_option"));
-				action_context.click();
-				System.out.println("[action log] 더보기 메뉴 열기");
+				try{
+					WebElement action_context = item.findElement(By.className("icon_ca_option"));
+					action_context.click();
+					System.out.println("[action log] 더보기 메뉴 열기(1번째 시도)");
+				}catch(ElementNotVisibleException e) {
+					WebElement action_context = item.findElement(By.className("icon_ca_option"));
+					action_context.click();
+					System.out.println("[action log] 더보기 메뉴 열기(2번째 시도)");
+				}
+
+				Thread.sleep(1 * 1000);
 				
+				// 이름 변경 메뉴 클릭
 				try{
 					WebElement change_name = item.findElement(By.className("change_name"));
 					change_name.click();
