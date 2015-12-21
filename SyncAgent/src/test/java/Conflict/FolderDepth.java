@@ -1,8 +1,5 @@
 package Conflict;
 
-import java.io.File;
-import java.util.List;
-
 import org.openqa.selenium.WebDriver;
 import org.junit.*;
 import org.junit.runners.MethodSorters;

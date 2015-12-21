@@ -53,8 +53,8 @@ public class FolderSync {
 		WebUtil.refreshUntil90Seconds(1, driver);
 		
 		// PC에서 폴더명 변경
-		String oldName = "New Folder";
-		String newName = "New Folder renamed";
+		String oldName = "/New Folder";
+		String newName = "/New Folder renamed";
 		fu.renameFileDirectory(oldName, newName, userId);
 		
 		// 웹에서 폴더명 변경 확인
@@ -70,7 +70,7 @@ public class FolderSync {
 		WebUtil.refreshUntil90Seconds(1, driver);
 		
 		// PC에서 폴더 삭제
-		String fileName = "New Folder";
+		String fileName = "/New Folder";
 		fu.forceDelete(fileName, userId);
 		
 		// 웹에서 확인
@@ -87,8 +87,8 @@ public class FolderSync {
 		WebUtil.refreshUntil90Seconds(2, driver);
 		
 		// PC에서 폴더 이동
-		File srcDir = new File("New Folder1");
-		File dstDir = new File("New Folder2");
+		String srcDir = "/New Folder1";
+		String dstDir = "/New Folder2";
 		fu.moveDirectoryToDirectory(srcDir, dstDir, userId);
 		
 		// 웹에서 확인

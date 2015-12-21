@@ -133,19 +133,19 @@ public class FileUtil {
 		return list;
 	}
 	
-	public void moveDirectoryToDirectory(File srcDir, File dstDir, String userId) throws Exception {
+	public void moveDirectoryToDirectory(String srcDir, String dstDir, String userId) throws Exception {
 		
-		File src = new File(System.getProperty("user.home") + "/MyDrive(" + userId + ")/" + srcDir);
-		File dst = new File(System.getProperty("user.home") + "/MyDrive("+ userId + ")/" + dstDir);
+		File src = new File(System.getProperty("user.home") + "/MyDrive(" + userId + ")" + srcDir);
+		File dst = new File(System.getProperty("user.home") + "/MyDrive("+ userId + ")" + dstDir);
 		FileUtils.moveDirectoryToDirectory(src, dst, false);
 		
 		System.out.println("* PC에서 폴더 이동: " + srcDir + " -> " + dstDir);
 	}
 	
-	public void moveFileToDirectory(File srcFile, File dstDir, String userId) throws Exception {
+	public void moveFileToDirectory(String srcFile, String dstDir, String userId) throws Exception {
 		
-		File src = new File(System.getProperty("user.home") + "/MyDrive(" + userId + ")/" + srcFile);
-		File dst = new File(System.getProperty("user.home") + "/MyDrive("+ userId + ")/" + dstDir);
+		File src = new File(System.getProperty("user.home") + "/MyDrive(" + userId + ")" + srcFile);
+		File dst = new File(System.getProperty("user.home") + "/MyDrive("+ userId + ")" + dstDir);
 		FileUtils.moveFileToDirectory(src, dst, false);
 		
 		System.out.println("* PC에서 파일 이동: " + srcFile + " -> " + dstDir);
@@ -153,8 +153,8 @@ public class FileUtil {
 	
 	public boolean renameFileDirectory(String oldName, String newName, String userId) {
 		
-		File oldNm= new File(System.getProperty("user.home") + "/MyDrive(" + userId + ")/" + oldName);
-		File newNm = new File(System.getProperty("user.home") + "/MyDrive(" + userId + ")/" + newName);
+		File oldNm= new File(System.getProperty("user.home") + "/MyDrive(" + userId + ")" + oldName);
+		File newNm = new File(System.getProperty("user.home") + "/MyDrive(" + userId + ")" + newName);
 		
 		boolean isRenamed = oldNm.renameTo(newNm);
 		System.out.println("* PC에서 이름 변경: " + oldName + " -> " + newName);
@@ -165,7 +165,7 @@ public class FileUtil {
 	
 	public void deleteDirectory(String dirName, String userId) throws Exception {
 		
-		File dir = new File(System.getProperty("user.home") + "/MyDrive("+ userId + ")/" + dirName);
+		File dir = new File(System.getProperty("user.home") + "/MyDrive("+ userId + ")" + dirName);
 		FileUtils.deleteDirectory(dir);
 		
 		System.out.println("* PC에서 폴더 삭제: " + dirName);
@@ -173,7 +173,7 @@ public class FileUtil {
 	
 	public void forceDelete(String fileName, String userId) throws Exception {
 		
-		File file = new File(System.getProperty("user.home") + "/MyDrive("+ userId + ")/" + fileName);
+		File file = new File(System.getProperty("user.home") + "/MyDrive("+ userId + ")" + fileName);
 		FileUtils.forceDelete(file);
 		
 		System.out.println("* PC에서 파일 삭제: " + fileName);

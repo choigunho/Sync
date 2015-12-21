@@ -151,8 +151,8 @@ public class DifferentFiles {
 		WebUtil.refreshUntil90Seconds(1, driver);
 		
 		// pc에서 파일 이동
-		File src = new File("Conflict_PC.docx");
-		File dstDir = new File("Move");
+		String src = "/Conflict_PC.docx";
+		String dstDir = "/Move";
 		fu.moveFileToDirectory(src, dstDir, userId);
 		
 		// 웹에서 이름 변경

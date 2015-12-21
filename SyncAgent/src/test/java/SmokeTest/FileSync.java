@@ -57,8 +57,8 @@ public class FileSync {
 		WebUtil.refreshUntil90Seconds(1, driver);
 		
 		// pc에서 파일명 변경
-		String oldName = "File_DOCX.docx";
-		String newName = "File_DOCX_renamed.docx";
+		String oldName = "/File_DOCX.docx";
+		String newName = "/File_DOCX_renamed.docx";
 		fu.renameFileDirectory(oldName, newName, userId);
 		
 		// 웹에서 이름변경 확인
@@ -76,7 +76,7 @@ public class FileSync {
 		WebUtil.refreshUntil90Seconds(1, driver);
 		
 		// pc에서 파일 삭제
-		String fileName = "File_DOCX.docx";
+		String fileName = "/File_DOCX.docx";
 		fu.forceDelete(fileName, userId);
 		
 		// 웹에서 삭제 확인
@@ -95,8 +95,8 @@ public class FileSync {
 		WebUtil.refreshUntil90Seconds(2, driver);
 		
 		// pc에서 파일 이동
-		File src = new File("File_DOCX.docx");
-		File dstDir = new File("Move");
+		String src = "/File_DOCX.docx";
+		String dstDir = "/Move";
 		fu.moveFileToDirectory(src, dstDir, userId);
 		
 		WebUtil.navigateToFolder("Move", driver);

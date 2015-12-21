@@ -113,8 +113,8 @@ public class DifferentFolders {
 		WebUtil.refreshUntil90Seconds(1, driver);
 		
 		// pc에서 이름 변경
-		String oldName = "Conflict";
-		String newName = "Conflict13";
+		String oldName = "/Conflict";
+		String newName = "/Conflict13";
 		fu.renameFileDirectory(oldName, newName, userId);
 		
 		// 웹에서 폴더 생성
@@ -173,8 +173,8 @@ public class DifferentFolders {
 		WebUtil.refreshUntil90Seconds(2, driver);
 		
 		// pc에서 폴더 이동
-		File srcDir = new File("Conflict15");
-		File dstDir = new File("Move");
+		String srcDir = "/Conflict15";
+		String dstDir = "/Move";
 		fu.moveDirectoryToDirectory(srcDir, dstDir, userId);
 		
 		// 웹에서 Move 하위에 폴더 생성
@@ -202,8 +202,8 @@ public class DifferentFolders {
 		WebUtil.refreshUntil90Seconds(2, driver);
 		
 		// pc에서 폴더 이동
-		File srcDir = new File("Conflict16");
-		File dstDir = new File("Move");
+		String srcDir = "/Conflict16";
+		String dstDir = "/Move";
 		fu.moveDirectoryToDirectory(srcDir, dstDir, userId);
 		
 		// 웹에서 이름 변경

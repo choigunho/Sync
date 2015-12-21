@@ -41,8 +41,8 @@ public class SameFiles {
 		WebUtil.refreshUntil90Seconds(1, driver);	
 		
 		// pc에서 이름 변경
-		String oldName = "Conflict.pptx";
-		String newName = "Conflict_PC.pptx";
+		String oldName = "/Conflict.pptx";
+		String newName = "/Conflict_PC.pptx";
 		fu.renameFileDirectory(oldName, newName, userId);
 		
 		// 웹에서 이름 변경
@@ -72,8 +72,8 @@ public class SameFiles {
 		WebUtil.refreshUntil90Seconds(2, driver);	
 		
 		// pc에서 이름 변경
-		String oldName = "Conflict.pptx";
-		String newName = "Conflict_PC.pptx";
+		String oldName = "/Conflict.pptx";
+		String newName = "/Conflict_PC.pptx";
 		fu.renameFileDirectory(oldName, newName, userId);
 		
 		// 웹에서 이동
@@ -110,8 +110,8 @@ public class SameFiles {
 		WebUtil.refreshUntil90Seconds(1, driver);	
 		
 		// pc에서 이름 변경
-		String oldName = "Conflict.pptx";
-		String newName = "Conflict_PC.pptx";
+		String oldName = "/Conflict.pptx";
+		String newName = "/Conflict_PC.pptx";
 		fu.renameFileDirectory(oldName, newName, userId);
 		
 		// 웹에서 삭제
@@ -157,8 +157,8 @@ public class SameFiles {
 		WebUtil.refreshUntil90Seconds(2, driver);
 		
 		// pc에서 파일 이동
-		File src = new File("Conflict.pptx");
-		File dstDir = new File("Move");
+		String src = "/Conflict.pptx";
+		String dstDir = "/Move";
 		fu.moveFileToDirectory(src, dstDir, userId);
 		
 		// 웹에서 이름 변경
@@ -192,8 +192,8 @@ public class SameFiles {
 		WebUtil.refreshUntil90Seconds(3, driver);
 		
 		// pc에서 파일 이동
-		File src = new File("Conflict.pptx");
-		File dstDir = new File("MovePC");
+		String src = "/Conflict.pptx";
+		String dstDir = "/MovePC";
 		fu.moveFileToDirectory(src, dstDir, userId);
 		
 		// 웹에서 파일 이동
@@ -225,8 +225,8 @@ public class SameFiles {
 		WebUtil.refreshUntil90Seconds(2, driver);
 		
 		// pc에서 파일 이동
-		File src = new File("Conflict.pptx");
-		File dstDir = new File("Move");
+		String src = "/Conflict.pptx";
+		String dstDir = "/Move";
 		fu.moveFileToDirectory(src, dstDir, userId);
 		
 		// 웹에서 삭제
@@ -254,7 +254,7 @@ public class SameFiles {
 		WebUtil.refreshUntil90Seconds(1, driver);	
 		
 		// pc에서 파일 삭제
-		String fileName = "Conflict.pptx";
+		String fileName = "/Conflict.pptx";
 		fu.forceDelete(fileName, userId);
 		
 		// 웹에서 이름 변경
@@ -283,7 +283,7 @@ public class SameFiles {
 		WebUtil.refreshUntil90Seconds(2, driver);
 		
 		// pc에서 파일 삭제
-		String fileName = "Conflict.pptx";
+		String fileName = "/Conflict.pptx";
 		fu.forceDelete(fileName, userId);
 		
 		// 웹에서 파일 이동
@@ -311,7 +311,7 @@ public class SameFiles {
 		WebUtil.refreshUntil90Seconds(1, driver);
 				
 		// pc에서 파일 삭제
-		String fileName = "Conflict.pptx";
+		String fileName = "/Conflict.pptx";
 		fu.forceDelete(fileName, userId);
 		
 		// 웹에서 삭제

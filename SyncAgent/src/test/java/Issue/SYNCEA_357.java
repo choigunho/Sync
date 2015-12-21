@@ -44,8 +44,8 @@ public class SYNCEA_357 {
 		assertTrue(list.contains("B"));
 		
 		// 로컬에서 A폴더를 B폴더 하위로 이동
-		File srcDir = new File("A");
-		File dstDir = new File("B");
+		String srcDir = "/A";
+		String dstDir = "/B";
 		fu.moveDirectoryToDirectory(srcDir, dstDir, userId);
 		
 		// 웹에서 Move 하위에 폴더 생성

@@ -40,8 +40,8 @@ public class SameFolders {
 		WebUtil.refreshUntil90Seconds(2, driver);
 		
 		// pc에서 이름 변경
-		String oldName = "Conflict2";
-		String newName = "Conflict2_PC";
+		String oldName = "/Conflict2";
+		String newName = "/Conflict2_PC";
 		fu.renameFileDirectory(oldName, newName, userId);
 		
 		Thread.sleep(1 * 1000);
@@ -73,8 +73,8 @@ public class SameFolders {
 		WebUtil.refreshUntil90Seconds(1, driver);
 		
 		// pc에서 이름 변경
-		String oldName = "Conflict3";
-		String newName = "Conflict3_PC";
+		String oldName = "/Conflict3";
+		String newName = "/Conflict3_PC";
 		fu.renameFileDirectory(oldName, newName, userId);
 		
 		// 웹에서 삭제
@@ -100,8 +100,8 @@ public class SameFolders {
 		WebUtil.refreshUntil90Seconds(1, driver);
 		
 		// pc에서 이름 변경
-		String oldName = "conflict1";
-		String newName1 = "conflict_PC";
+		String oldName = "/conflict1";
+		String newName1 = "/conflict_PC";
 		fu.renameFileDirectory(oldName, newName1, userId);
 		
 		Thread.sleep(1 * 1000);
@@ -136,8 +136,8 @@ public class SameFolders {
 		WebUtil.refreshUntil90Seconds(2, driver);
 		
 		// pc에서 폴더 이동
-		File srcDir = new File("Conflict4");
-		File dstDir = new File("Move");
+		String srcDir = "/Conflict4";
+		String dstDir = "/Move";
 		fu.moveDirectoryToDirectory(srcDir, dstDir, userId);
 		
 		Thread.sleep(1 * 1000);
@@ -168,8 +168,8 @@ public class SameFolders {
 		WebUtil.refreshUntil90Seconds(3, driver);
 		
 		// pc에서 폴더 이동
-		File srcDir = new File("Conflict5");
-		File dstDir = new File("Move01");
+		String srcDir = "/Conflict5";
+		String dstDir = "/Move01";
 		fu.moveDirectoryToDirectory(srcDir, dstDir, userId);
 		
 		// 웹에서 이동
@@ -197,8 +197,8 @@ public class SameFolders {
 		WebUtil.refreshUntil90Seconds(2, driver);
 		
 		// pc에서 폴더 이동
-		File srcDir = new File("Conflict6");
-		File dstDir = new File("Move");
+		String srcDir = "/Conflict6";
+		String dstDir = "/Move";
 		fu.moveDirectoryToDirectory(srcDir, dstDir, userId);
 		
 		// 웹에서 삭제
@@ -218,7 +218,7 @@ public class SameFolders {
 		WebUtil.refreshUntil90Seconds(1, driver);
 		
 		// pc에서 삭제
-		String folderName = "Conflict7";
+		String folderName = "/Conflict7";
 		fu.deleteDirectory(folderName, userId);
 		
 		// 웹에서 이름 변경
@@ -245,7 +245,7 @@ public class SameFolders {
 		WebUtil.refreshUntil90Seconds(2, driver);
 		
 		// pc에서 삭제
-		String folderName = "Conflict8";
+		String folderName = "/Conflict8";
 		fu.deleteDirectory(folderName, userId);
 		
 		// 웹에서 이동
@@ -271,7 +271,7 @@ public class SameFolders {
 		WebUtil.refreshUntil90Seconds(1, driver);
 		
 		// pc에서 삭제
-		String folderName = "Conflict9";
+		String folderName = "/Conflict9";
 		fu.deleteDirectory(folderName, userId);
 		
 		// 웹에서 삭제
