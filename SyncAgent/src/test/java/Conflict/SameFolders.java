@@ -100,11 +100,11 @@ public class SameFolders {
 		WebUtil.refreshUntil90Seconds(1, driver);
 		
 		// pc에서 이름 변경
-		String oldName = "/conflict1";
-		String newName1 = "/conflict_PC";
-		fu.renameFileDirectory(oldName, newName1, userId);
+		String oldName = "conflict1";
+		String newName1 = "conflict_PC";
+		fu.renameFileDirectory("/" + oldName, "/" + newName1, userId);
 		
-		Thread.sleep(1 * 1000);
+		//Thread.sleep(1 * 1000);
 		
 		// 웹에서 이름 변경
 		String newName2 = "conflict_WEB";
@@ -205,8 +205,8 @@ public class SameFolders {
 		WebUtil.deleteFolder("Conflict6", driver);
 		
 		// 확인(pc)
-		File dir = new File("/Move");
-		fu.checkUtil60Seconds("(conflicted)Conflict6", userId, dir);
+		String dir = "/Move";
+		fu.checkUntil60Seconds("(conflicted)Conflict6", userId, dir);
 		
 	}
 	

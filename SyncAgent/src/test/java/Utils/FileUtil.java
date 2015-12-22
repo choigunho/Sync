@@ -40,21 +40,21 @@ public class FileUtil {
 		}
 	}
 	
-	public void checkUtil60Seconds(String fileName, String userId, File targetDir) {
+	public void checkUntil60Seconds(String fileName, String userId, String targetDir) {
 	
 		Awaitility.setDefaultTimeout(60, TimeUnit.SECONDS);
 		Awaitility.setDefaultPollInterval(1, TimeUnit.SECONDS);
 		
 		try {
 			await().until(checkNameCollable(fileName, userId, targetDir));
-			System.out.println(fileName + " 파일(폴더) PC 동기화 완료: " + getFileList(targetDir.getName(), userId));
+			System.out.println(fileName + " 파일(폴더) PC 동기화 완료: " + getFileList(targetDir, userId));
 		}catch(Exception e){
-			fail("PC 동기화 실패!");
+			fail(fileName + " 파일(폴더) PC 동기화 실패!");
 			e.printStackTrace();
 		}
 	}
 	
-	public Callable<Boolean> checkNameCollable(final String fileName, final String userId, final File targetDir) {
+	public Callable<Boolean> checkNameCollable(final String fileName, final String userId, final String targetDir) {
 		return new Callable<Boolean>() {
 			public Boolean call() throws Exception {
 				
