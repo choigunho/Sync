@@ -11,7 +11,7 @@ import static org.junit.Assert.*;
 
 @Ignore("기대결과 미정") 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class FolderDepth {
+public class FoldersDepth {
 	
 	String userId = AccountUtil.getUserId();
 	String pwd =  AccountUtil.getUserPwd();
@@ -42,7 +42,7 @@ public class FolderDepth {
 		fu.createFolder(parentFolder + subFolder, userId);
 		
 		// web에서 상위 폴더 삭제
-		WebUtil.deleteFolder(parentFolder, driver);
+		WebUtil.deleteItem(parentFolder, driver);
 		
 		// 확인
 		// to do
@@ -65,7 +65,7 @@ public class FolderDepth {
 		fu.renameFileDirectory(parentFolder + subFolder, parentFolder + subFolder_NEW, userId);
 		
 		// web에서 상위 폴더 삭제
-		WebUtil.deleteFolder(parentFolder, driver);
+		WebUtil.deleteItem(parentFolder, driver);
 		
 		// 확인
 		// to do
@@ -88,7 +88,7 @@ public class FolderDepth {
 		fu.moveDirectoryToDirectory(subFolder, parentFolder, userId);
 		
 		// web에서 상위 폴더 삭제
-		WebUtil.deleteFolder(parentFolder, driver);
+		WebUtil.deleteItem(parentFolder, driver);
 		
 		// 확인
 		// to do
@@ -110,7 +110,7 @@ public class FolderDepth {
 		fu.deleteDirectory(parentFolder + subFolder, subFolder);
 		
 		// web에서 상위 폴더 삭제
-		WebUtil.deleteFolder(parentFolder, driver);
+		WebUtil.deleteItem(parentFolder, driver);
 		
 		// 확인
 		// to do
@@ -203,7 +203,7 @@ public class FolderDepth {
 		
 		// web에서 하위 폴더 삭제
 		WebUtil.navigateToFolder(parentFolder, driver);
-		WebUtil.deleteFolder(subFolder, driver);
+		WebUtil.deleteItem(subFolder, driver);
 		
 		// 확인
 		// to do

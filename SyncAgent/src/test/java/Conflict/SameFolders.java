@@ -78,7 +78,7 @@ public class SameFolders {
 		fu.renameFileDirectory(oldName, newName, userId);
 		
 		// 웹에서 삭제
-		WebUtil.deleteFolder("Conflict3", driver);
+		WebUtil.deleteItem("Conflict3", driver);
 		
 		// 동기화
 		WebUtil.refreshUntil90Seconds(1, driver);
@@ -202,7 +202,7 @@ public class SameFolders {
 		fu.moveDirectoryToDirectory(srcDir, dstDir, userId);
 		
 		// 웹에서 삭제
-		WebUtil.deleteFolder("Conflict6", driver);
+		WebUtil.deleteItem("Conflict6", driver);
 		
 		// 확인(pc)
 		String dir = "/Move";
@@ -275,7 +275,7 @@ public class SameFolders {
 		fu.deleteDirectory(folderName, userId);
 		
 		// 웹에서 삭제
-		WebUtil.deleteFolder("Conflict9", driver);
+		WebUtil.deleteItem("Conflict9", driver);
 		
 		// 동기화
 		WebUtil.refreshAfter60Seconds(driver);

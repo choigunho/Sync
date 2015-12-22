@@ -115,7 +115,7 @@ public class SameFiles {
 		fu.renameFileDirectory(oldName, newName, userId);
 		
 		// 웹에서 삭제
-		WebUtil.deleteFolder("Conflict.pptx", driver);
+		WebUtil.deleteItem("Conflict.pptx", driver);
 		
 		// 동기화 
 		WebUtil.refreshUntil90Seconds(1, driver);
@@ -230,7 +230,7 @@ public class SameFiles {
 		fu.moveFileToDirectory(src, dstDir, userId);
 		
 		// 웹에서 삭제
-		WebUtil.deleteFolder("Conflict.pptx", driver);
+		WebUtil.deleteItem("Conflict.pptx", driver);
 		
 		// 동기화
 		Thread.sleep(1 * 1000);
@@ -315,7 +315,7 @@ public class SameFiles {
 		fu.forceDelete(fileName, userId);
 		
 		// 웹에서 삭제
-		WebUtil.deleteFolder("Conflict.pptx", driver);
+		WebUtil.deleteItem("Conflict.pptx", driver);
 		
 		// 동기화
 		WebUtil.refreshAfter60Seconds(driver);

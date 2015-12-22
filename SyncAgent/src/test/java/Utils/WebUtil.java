@@ -118,7 +118,7 @@ public class WebUtil {
 		System.out.println("** 웹에서 새로운 폴더 생성: " + folderName);
 	}
 	
-	public static void deleteFolder(String folderName, WebDriver driver) throws Exception {
+	public static void deleteItem(String folderName, WebDriver driver) throws Exception {
 			
 		// 아이템 클릭
 		itemClick(folderName, driver);
@@ -269,7 +269,7 @@ public class WebUtil {
 	}
 	
 	public static void itemClick(String item, WebDriver driver) throws Exception {
-		
+				
 		String itemName = item;
 		
 		if(item.startsWith("/")){
@@ -308,9 +308,9 @@ public class WebUtil {
 		}
 	}
 	
-	public static void navigateToHome(WebDriver driver) {
+	public static void navigateToHome(WebDriver driver) throws Exception {
 		
 		driver.get(AccountUtil.getServerUrl());
-		
+		Thread.sleep(1 * 1000);	
 	}
 }
