@@ -119,7 +119,7 @@ public class WebUtil {
 	}
 	
 	public static void deleteFolder(String folderName, WebDriver driver) throws Exception {
-	
+			
 		// 아이템 클릭
 		itemClick(folderName, driver);
 		
@@ -141,6 +141,11 @@ public class WebUtil {
 	
 	public static void moveToFolder(String itemName, String parentFolder, WebDriver driver) throws Exception {
 	
+		String pFolder = parentFolder;
+		if(parentFolder.startsWith("/")){
+			pFolder = parentFolder.substring(1);
+		}
+		
 		// 아이템(파일or폴더) 클릭
 		itemClick(itemName, driver);
 		
@@ -161,7 +166,7 @@ public class WebUtil {
 		List<WebElement> items = driver.findElements(By.className("jqx-tree-item-li"));
 		items.remove(0);
 		for(WebElement item: items) {
-			if(item.getText().equals(parentFolder)) {
+			if(item.getText().equals(pFolder)) {
 				(new WebDriverWait(driver, 10)).until(new ExpectedCondition<Boolean>() {
 					public Boolean apply(WebDriver d) {
 						return d.findElement(By.className("jqx-tree-item")).isDisplayed();
@@ -180,11 +185,21 @@ public class WebUtil {
 	
 	public static void rename(String oldName, String newName, WebDriver driver) throws Exception {
 		
+		String oName = oldName;
+		if(oldName.startsWith("/")){
+			oName = oldName.substring(1);
+		}
+		
+		String nName = newName;
+		if(newName.startsWith("/")){
+			nName = newName.substring(1);
+		}
+		
 		List<WebElement> tbody = driver.findElements(By.cssSelector("tbody[sf-virtual-repeat]"));
 		for(WebElement item: tbody) {
 			
 			WebElement fold = item.findElement(By.className("file"));
-			if(fold.getText().equals(oldName)) {
+			if(fold.getText().equals(oName)) {
 
 				// 컨텍스트 메뉴 클릭
 				try{
@@ -214,12 +229,12 @@ public class WebUtil {
 				try{
 					WebElement textField = item.findElement(By.id("inputFilRenm"));	
 					textField.clear();
-					textField.sendKeys(newName);
+					textField.sendKeys(nName);
 					System.out.println("[action log] 텍스트 입력(1번째 시도)");
 				}catch(Exception e){
 					WebElement textField = item.findElement(By.id("inputFldRenm"));
 					textField.clear();
-					textField.sendKeys(newName);
+					textField.sendKeys(nName);
 					System.out.println("[action log] 텍스트 입력(2번째 시도)");
 				}
 				
@@ -228,19 +243,25 @@ public class WebUtil {
 				btn.get(1).click();
 				System.out.println("[action log] 저장 버튼 클릭");
 			
-				System.out.println("** 웹에서 이름 변경: " + oldName + " -> " + newName);
+				System.out.println("** 웹에서 이름 변경: " + oName + " -> " + nName);
 			}
 		}
 	}
 	
 	public static void navigateToFolder(String dstFolder, WebDriver driver) throws Exception {
 		
+		String folderName = dstFolder;
+		
+		if(dstFolder.startsWith("/")){
+			folderName = dstFolder.substring(1);
+		}
+		
 		List<WebElement> folders = driver.findElements(By.className("fold_name"));
 		
 		for(WebElement folder: folders) {
-			if(folder.getText().equals(dstFolder)) {
+			if(folder.getText().equals(folderName)) {
 				folder.click();
-				System.out.println("** " + dstFolder + " 폴더 페이지로 이동");
+				System.out.println("** " + folderName + " 폴더 페이지로 이동");
 				break;
 			}
 		}
@@ -249,13 +270,19 @@ public class WebUtil {
 	
 	public static void itemClick(String item, WebDriver driver) throws Exception {
 		
+		String itemName = item;
+		
+		if(item.startsWith("/")){
+			itemName = item.substring(1);
+		}
+		
 		List<WebElement> tbody = driver.findElements(By.cssSelector("tbody[sf-virtual-repeat]"));
 		for(WebElement body: tbody) {
 			
 			WebElement fold = body.findElement(By.className("file"));
-			if(fold.getText().equals(item)) {
+			if(fold.getText().equals(itemName)) {
 				fold.click();
-				System.out.println("[action log] 아이템 클릭(" + item + ")");
+				System.out.println("[action log] 아이템 클릭(" + itemName + ")");
 				break;
 			}
 		}

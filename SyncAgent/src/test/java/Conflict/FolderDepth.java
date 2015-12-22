@@ -9,6 +9,7 @@ import Utils.FileUtil;
 import Utils.WebUtil;
 import static org.junit.Assert.*;
 
+@Ignore("기대결과 미정") 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class FolderDepth {
 	
@@ -28,79 +29,186 @@ public class FolderDepth {
 		driver = AccountUtil.login(userId, pwd);
 	}
 	
-	@Ignore("정책 미정") @Test
+	@Test
 	public void createSubFolderAtPC_deleteParentFolderAtWEB() throws Exception {
 		
 		// 동기화 폴더 생성 후 동기화
-		fu.createFolder("/Folder", userId);
-		WebUtil.refreshUntil90Seconds(1, driver);
+		String parentFolder = "/Folder";
+		fu.createFolder(parentFolder, userId);
+		WebUtil.refreshUntil90Seconds(1, driver); // 상위 폴더 생성만 확인하고 넘어감
 		
-		// pc에서 하위 폴더 생성
-		fu.createFolder("/Folder/Conflict17", userId);
+		// pc에서 폴더 생성
+		String subFolder = "/Conflict17";
+		fu.createFolder(parentFolder + subFolder, userId);
 		
 		// web에서 상위 폴더 삭제
-		WebUtil.deleteFolder("Folder", driver);
+		WebUtil.deleteFolder(parentFolder, driver);
 		
 		// 확인
 		// to do
-		
+		//Thread.sleep(60 * 1000);
 		
 	}
 	
-	@Ignore("정책 미정") @Test
+	@Test
 	public void renameSubFolderAtPC_deleteParentFolderAtWEB() throws Exception {
 		
+		String parentFolder = "/Folder";
+		String subFolder = "/Conflict18";
+		
 		// 동기화 폴더 생성 후 동기화
-		fu.createFolder("/Folder/Conflict18", userId);
-		WebUtil.refreshUntil90Seconds(1, driver);
+		fu.createFolder(parentFolder + subFolder, userId);
+		WebUtil.refreshUntil90Seconds(1, driver); // 상위 폴더 생성만 확인하고 넘어감
 		
 		// pc에서 하위 폴더 이름 변경
-		fu.renameFileDirectory("/Folder/Conflict18", "/Folder/Conflict18_NEW", userId);
+		String subFolder_NEW = "/Conflict18_NEW";
+		fu.renameFileDirectory(parentFolder + subFolder, parentFolder + subFolder_NEW, userId);
 		
 		// web에서 상위 폴더 삭제
-		WebUtil.deleteFolder("Folder", driver);
+		WebUtil.deleteFolder(parentFolder, driver);
 		
 		// 확인
 		// to do
-		
+		//Thread.sleep(60 * 1000);
 		
 	}
 	
-	@Ignore("정책 미정") @Test
+	@Test
 	public void moveSubFolderAtPC_deleteParentFolderAtWEB() throws Exception {
 		
 		// 동기화 폴더 생성 후 동기화
-		fu.createFolder("/Folder", userId);
-		fu.createFolder("/Conflict19", userId);
+		String parentFolder = "/Folder";
+		String subFolder = "/Conflict19";
+		
+		fu.createFolder(parentFolder, userId);
+		fu.createFolder(subFolder, userId);
 		WebUtil.refreshUntil90Seconds(2, driver);
 		
 		// pc에서 폴더 이동
+		fu.moveDirectoryToDirectory(subFolder, parentFolder, userId);
+		
+		// web에서 상위 폴더 삭제
+		WebUtil.deleteFolder(parentFolder, driver);
+		
+		// 확인
+		// to do
 		
 		
 	}
 	
-	@Ignore("정책 미정") @Test
+	@Test
 	public void deleteSubFolderAtPC_deleteParentFolderAtWEB() throws Exception {
+	
+		// 동기화 폴더 생성 후 동기화
+		String parentFolder = "/Folder";
+		String subFolder = "/conflict20";
+		
+		fu.createFolder(parentFolder + subFolder, userId);
+		WebUtil.refreshUntil90Seconds(1, driver);
+		
+		// pc에서 폴더 삭제
+		fu.deleteDirectory(parentFolder + subFolder, subFolder);
+		
+		// web에서 상위 폴더 삭제
+		WebUtil.deleteFolder(parentFolder, driver);
+		
+		// 확인
+		// to do
 		
 	}
 	
-	@Ignore("정책 미정") @Test
+	@Test
 	public void deleteParentFolderAtPC_createSubFolderAtWEB() throws Exception {
 		
+		// 동기화 폴더 생성 후 동기화
+		String parentFolder = "/Folder";
+		
+		fu.createFolder(parentFolder, userId);
+		WebUtil.refreshUntil90Seconds(1, driver);
+		
+		// pc에서 상위 폴더 삭제
+		fu.deleteDirectory(parentFolder, userId);
+		
+		// web에서 하위 폴더 생성
+		WebUtil.navigateToFolder(parentFolder, driver);
+		
+		String subFolder = "conflict21";
+		WebUtil.createFolder(subFolder, driver);
+		
+		// 확인
+		// to do
+		
 	}
 	
-	@Ignore("정책 미정") @Test
+	@Test
 	public void deleteParentFolderAtPC_renameSubFolderAtWEB() throws Exception {
 		
-	}
-	
-	@Ignore("정책 미정") @Test
-	public void deleteParentFolderAtPC_moveSubFolderAtWEB() throws Exception {
+		// 동기화 폴더 생성 후 동기화
+		String parentFolder = "/Folder";
+		String subFolder = "/conflict22";
+		
+		fu.createFolder(parentFolder + subFolder, userId);
+		WebUtil.refreshUntil90Seconds(1, driver);
+		
+		// pc에서 상위 폴더 삭제
+		fu.deleteDirectory(parentFolder, userId);
+		
+		// web에서 하위 폴더 이름 변경
+		WebUtil.navigateToFolder(parentFolder, driver);
+		WebUtil.rename(subFolder, subFolder + "_New", driver);
+		
+		// 확인
+		// to do
+		// Thread.sleep(60 * 1000);
+		
 		
 	}
 	
-	@Ignore("정책 미정") @Test
+	@Test
+	public void deleteParentFolderAtPC_moveSubFolderAtWEB() throws Exception {
+		
+		// 동기화 폴더 생성 후 동기화
+		String parentFolder = "/Folder";
+		String subFoler = "/conflict23";
+		
+		fu.createFolder(parentFolder, userId);
+		fu.createFolder(subFoler, userId);
+		WebUtil.refreshUntil90Seconds(2, driver);
+		
+		// pc에서 폴더 삭제
+		fu.deleteDirectory(parentFolder, userId);
+		
+		// web에서 폴더 이동
+		WebUtil.moveToFolder(subFoler, parentFolder, driver);
+		
+		// 확인
+		// to do
+		// Thread.sleep(10 * 1000);
+		
+		
+	}
+	
+	@Test
 	public void deleteParentFolderAtPC_deleteSubFolderAtWEB() throws Exception {
+		
+		// 동기화 폴더 생성 후 동기화
+		String parentFolder = "/Folder";
+		String subFolder = "/conflict24";
+		
+		fu.createFolder(parentFolder + subFolder, userId);
+		WebUtil.refreshUntil90Seconds(1, driver);
+		
+		// pc에서 상위 폴더 삭제
+		fu.deleteDirectory(parentFolder, userId);
+		
+		// web에서 하위 폴더 삭제
+		WebUtil.navigateToFolder(parentFolder, driver);
+		WebUtil.deleteFolder(subFolder, driver);
+		
+		// 확인
+		// to do
+		Thread.sleep(10 * 1000);
+		
 		
 	}
 	
