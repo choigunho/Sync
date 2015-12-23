@@ -32,10 +32,10 @@ public class FoldersDepth {
 	@Test
 	public void createSubFolderAtPC_deleteParentFolderAtWEB() throws Exception {
 		
-		// 동기화 폴더 생성 후 동기화
+		// 동기화 폴더 생성 후 동기화(사전 조건)
 		String parentFolder = "/Folder";
 		fu.createFolder(parentFolder, userId);
-		WebUtil.refreshUntil90Seconds(1, driver); // 상위 폴더 생성만 확인하고 넘어감
+		WebUtil.refreshUntil90Seconds(1, driver);
 		
 		// pc에서 폴더 생성
 		String subFolder = "/Conflict17";
@@ -53,18 +53,21 @@ public class FoldersDepth {
 	@Test
 	public void renameSubFolderAtPC_deleteParentFolderAtWEB() throws Exception {
 		
+		// 동기화 폴더 생성 후 동기화(사전 조건)
 		String parentFolder = "/Folder";
 		String subFolder = "/Conflict18";
-		
-		// 동기화 폴더 생성 후 동기화
 		fu.createFolder(parentFolder + subFolder, userId);
-		WebUtil.refreshUntil90Seconds(1, driver); // 상위 폴더 생성만 확인하고 넘어감
+
+		WebUtil.refreshUntil90Seconds(1, driver);
+		WebUtil.navigateToFolder(parentFolder, driver);
+		WebUtil.refreshUntil90Seconds(1, driver);
 		
 		// pc에서 하위 폴더 이름 변경
 		String subFolder_NEW = "/Conflict18_NEW";
 		fu.renameFileDirectory(parentFolder + subFolder, parentFolder + subFolder_NEW, userId);
 		
 		// web에서 상위 폴더 삭제
+		WebUtil.navigateToHome(driver);
 		WebUtil.deleteItem(parentFolder, driver);
 		
 		// 확인
@@ -76,7 +79,7 @@ public class FoldersDepth {
 	@Test
 	public void moveSubFolderAtPC_deleteParentFolderAtWEB() throws Exception {
 		
-		// 동기화 폴더 생성 후 동기화
+		// 동기화 폴더 생성 후 동기화(사전 조건)
 		String parentFolder = "/Folder";
 		String subFolder = "/Conflict19";
 		
@@ -99,17 +102,20 @@ public class FoldersDepth {
 	@Test
 	public void deleteSubFolderAtPC_deleteParentFolderAtWEB() throws Exception {
 	
-		// 동기화 폴더 생성 후 동기화
+		// 동기화 폴더 생성 후 동기화(사전 조건)
 		String parentFolder = "/Folder";
 		String subFolder = "/conflict20";
-		
 		fu.createFolder(parentFolder + subFolder, userId);
+		
+		WebUtil.refreshUntil90Seconds(1, driver);
+		WebUtil.navigateToFolder(parentFolder, driver);
 		WebUtil.refreshUntil90Seconds(1, driver);
 		
 		// pc에서 폴더 삭제
 		fu.deleteDirectory(parentFolder + subFolder, subFolder);
 		
 		// web에서 상위 폴더 삭제
+		WebUtil.navigateToHome(driver);
 		WebUtil.deleteItem(parentFolder, driver);
 		
 		// 확인
@@ -120,9 +126,8 @@ public class FoldersDepth {
 	@Test
 	public void deleteParentFolderAtPC_createSubFolderAtWEB() throws Exception {
 		
-		// 동기화 폴더 생성 후 동기화
+		// 동기화 폴더 생성 후 동기화(사전 조건)
 		String parentFolder = "/Folder";
-		
 		fu.createFolder(parentFolder, userId);
 		WebUtil.refreshUntil90Seconds(1, driver);
 		
@@ -131,7 +136,6 @@ public class FoldersDepth {
 		
 		// web에서 하위 폴더 생성
 		WebUtil.navigateToFolder(parentFolder, driver);
-		
 		String subFolder = "conflict21";
 		WebUtil.createFolder(subFolder, driver);
 		
@@ -143,11 +147,12 @@ public class FoldersDepth {
 	@Test
 	public void deleteParentFolderAtPC_renameSubFolderAtWEB() throws Exception {
 		
-		// 동기화 폴더 생성 후 동기화
+		// 동기화 폴더 생성 후 동기화(사전 조건)
 		String parentFolder = "/Folder";
 		String subFolder = "/conflict22";
-		
 		fu.createFolder(parentFolder + subFolder, userId);
+		WebUtil.refreshUntil90Seconds(1, driver);
+		WebUtil.navigateToFolder(parentFolder, driver);
 		WebUtil.refreshUntil90Seconds(1, driver);
 		
 		// pc에서 상위 폴더 삭제
@@ -167,7 +172,7 @@ public class FoldersDepth {
 	@Test
 	public void deleteParentFolderAtPC_moveSubFolderAtWEB() throws Exception {
 		
-		// 동기화 폴더 생성 후 동기화
+		// 동기화 폴더 생성 후 동기화(사전 조건)
 		String parentFolder = "/Folder";
 		String subFoler = "/conflict23";
 		
@@ -191,11 +196,12 @@ public class FoldersDepth {
 	@Test
 	public void deleteParentFolderAtPC_deleteSubFolderAtWEB() throws Exception {
 		
-		// 동기화 폴더 생성 후 동기화
+		// 동기화 폴더 생성 후 동기화(사전 조건)
 		String parentFolder = "/Folder";
 		String subFolder = "/conflict24";
-		
 		fu.createFolder(parentFolder + subFolder, userId);
+		WebUtil.refreshUntil90Seconds(1, driver);
+		WebUtil.navigateToFolder(parentFolder, driver);
 		WebUtil.refreshUntil90Seconds(1, driver);
 		
 		// pc에서 상위 폴더 삭제
