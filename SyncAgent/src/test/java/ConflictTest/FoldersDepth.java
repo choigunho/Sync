@@ -1,4 +1,4 @@
-package Conflict;
+package ConflictTest;
 
 import org.openqa.selenium.WebDriver;
 import org.junit.*;

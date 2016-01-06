@@ -1,4 +1,5 @@
-package Issue;
+package BulkDataTest;
+
 import java.io.File;
 import java.util.List;
 
@@ -12,7 +13,7 @@ import Utils.WebUtil;
 import static org.junit.Assert.*;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class SYNCEA_357 {
+public class Create100Folders {
 	
 	String userId = AccountUtil.getUserId();
 	String pwd =  AccountUtil.getUserPwd();
@@ -23,6 +24,7 @@ public class SYNCEA_357 {
 
 	@Before
 	public void setUp() throws Exception{
+		
 		// 동기화 폴더 초기화
 		fu.cleanDirectory(userId);		
 		
@@ -30,42 +32,40 @@ public class SYNCEA_357 {
 		driver = AccountUtil.login(userId, pwd);
 	}
 	
-	@Test 
-	public void SYNCEA357_이전과_다른_EFSS응답() throws Exception {
-	
-		// A폴더, B폴더 생성
-		fu.createFolder("/A", userId);
-		fu.createFolder("/B", userId);
-				
-		// 동기화 확인
-		WebUtil.refreshUntil90Seconds(2, driver);
-		List<String> list = WebUtil.getList(driver);
-		assertTrue(list.contains("A"));
-		assertTrue(list.contains("B"));
-		
-		// 로컬에서 A폴더를 B폴더 하위로 이동
-		String srcDir = "/A";
-		String dstDir = "/B";
-		fu.moveDirectoryToDirectory(srcDir, dstDir, userId);
-		
-		// 웹에서 Move 하위에 폴더 생성
-		WebUtil.navigateToFolder("B", driver);
-		Thread.sleep(1 * 1000);
-		WebUtil.createFolder("A", driver);
+	@Test
+	public void create100FoldersFromWeb() throws Exception {
 
-		// 동기화 대기
-		String targetDir = "/B";
-		fu.checkCountUntil60Seconds(2, userId, targetDir);
+		int totalFolders = 100;
 		
-		List<String> fileList = fu.getFileList("/B", userId);
-		assertTrue(fileList.contains("A"));
-		assertTrue(fileList.contains("A (1)"));
+		// 웹에서 폴더 100개 생성
+		WebUtil.createManyFolders(totalFolders, driver);
+		
+		// PC에서 동기화 확인
+		String targetDir = File.separator;
+		fu.checkCountUntil60Seconds(totalFolders, userId, targetDir);
+		
+	}
+	
+	@Test
+	public void create100FoldersFromPC() throws Exception {
+		
+		// PC에서 폴더 100개 생성
+		int totalFolders = 100;
+		for(int i=1; i<=totalFolders; i++) {
+			fu.createFolder("/New folder " + i, userId);			
+		}
+		
+		// 웹에서 동기화 확인
+		WebUtil.refreshAfter60Seconds(driver); 
+		WebUtil.pageDown(6, driver); // Page Down 키 입력 (부분 렌더링된 나머지 목록을 가져오기 위함)
+		List<String> list = WebUtil.getList(driver);
+		assertEquals(totalFolders, list.size());
 		
 	}
 	
 	@After
-	public void tearDown() throws Exception {
-
+	public void tearDown() throws Exception {	
+		
 		// 동기화 폴더 초기화
 		System.out.println("============동기화 폴더 초기화 시작============");
 		fu.cleanDirectory(userId);
@@ -78,7 +78,6 @@ public class SYNCEA_357 {
 	
 		if (!"".equals(verificationErrorString)) {
 			fail(verificationErrorString);
-		}	
-		
+		}
 	}
 }

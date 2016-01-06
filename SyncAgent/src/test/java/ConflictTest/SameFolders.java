@@ -1,4 +1,4 @@
-package Conflict;
+package ConflictTest;
 
 import java.io.File;
 import java.util.List;
